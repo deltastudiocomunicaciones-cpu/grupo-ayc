@@ -209,7 +209,14 @@ nav.scrolled{
 .hero-right{
   padding:80px 80px 80px 64px;
   display:flex;flex-direction:column;justify-content:flex-end;
-  background:var(--parchment);
+  background:url('https://i.imgur.com/XXXXXXX.jpg') center center / cover no-repeat;
+  position:relative;
+}
+.hero-right::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(247,244,239,0.45);
+  pointer-events:none;
+}
 }
 .hero-stats{
   display:grid;grid-template-columns:1fr 1fr;
