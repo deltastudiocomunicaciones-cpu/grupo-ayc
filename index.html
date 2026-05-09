@@ -49,31 +49,65 @@ body{
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 64px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:0 48px;
   height:72px;
   background:rgba(247,244,239,0.94);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border-oro);
-  transition:border-color .3s, box-shadow .3s;
+  transition:border-color .3s,box-shadow .3s;
 }
 nav.scrolled{
   box-shadow:0 1px 24px rgba(30,27,22,0.07);
   border-bottom-color:var(--border-oro-mid);
 }
-.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo{
+  display:flex;align-items:center;text-decoration:none;
+  position:relative;width:fit-content;
+}
 .nav-logo-mark{
-  width:36px;height:36px;
-  border:1.5px solid var(--oro);
-  border-radius:50%;
+  height:48px;width:auto;
+  object-fit:contain;object-position:left center;
+  display:block;
+  transition:transform .25s,filter .25s;
+  filter:drop-shadow(0 2px 8px rgba(201,169,110,0));
+}
+.nav-logo:hover .nav-logo-mark{
+  transform:scale(1.04);
+  filter:drop-shadow(0 4px 14px rgba(201,169,110,0.35));
+}
+.nav-ann-badge{
+  position:absolute;top:-8px;right:-18px;
+  background:var(--oro);
+  font-family:'DM Mono',monospace;font-size:7px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--obsidian);padding:3px 7px;
+  white-space:nowrap;pointer-events:none;
+}
+.nav-links{
   display:flex;align-items:center;justify-content:center;
-  position:relative;
-  background:transparent;
+  gap:32px;list-style:none;
 }
-.nav-logo-mark::after{
-  content:'';width:9px;height:9px;
-  background:var(--oro);border-radius:50%;
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--topo-dark);text-decoration:none;transition:color .2s;
+  white-space:nowrap;
 }
+.nav-links a:hover{color:var(--oro-deep);}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--marfil);background:var(--obsidian);
+  padding:10px 22px;text-decoration:none;transition:background .2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--carbon);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:.3s;}
 .nav-logo-text{
   font-family:'Syne',sans-serif;font-weight:700;
   font-size:13px;letter-spacing:.12em;
@@ -305,12 +339,20 @@ section.ink{background:var(--obsidian);border-bottom:1px solid rgba(201,169,110,
   color:var(--cobre);opacity:.7;
   transition:opacity .2s,transform .2s;display:inline-block;
 }
-.brand-card-logo{
-  height:34px;width:auto;max-width:130px;
-  object-fit:contain;margin:10px 0 2px;
-  opacity:.8;display:block;
-}  
 .brand-card:hover .brand-card-arrow{opacity:1;transform:translateX(4px);}
+.brand-card-logo{
+  display:block;
+  height:38px;width:auto;max-width:140px;
+  object-fit:contain;object-position:left center;
+  margin:12px 0 6px;
+  filter:saturate(0) brightness(.4);
+  opacity:.75;
+  transition:filter .25s,opacity .25s;
+}
+.brand-card:hover .brand-card-logo{
+  filter:none;
+  opacity:1;
+}
 
 /* ── SERVICIOS ── */
 .services-cols{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;}
@@ -606,10 +648,12 @@ footer{
 
 <!-- ══ NAV ══ -->
 <nav id="nav">
+  <!-- Logo izquierda — clickeable, con badge XX aniversario -->
   <a href="#" class="nav-logo">
-   <img src="https://i.imgur.com/pRI442c.png" alt="Nombre marca" class="nav-logo-mark" style="height:80px;width:auto;object-fit:contain;">
-    <div>
+    <img src="https://i.imgur.com/pRI442c.png" alt="Grupo Análisis &amp; Consultorías" class="nav-logo-mark">
+    <span class="nav-ann-badge">XX · 2026</span>
   </a>
+  <!-- Links centro -->
   <ul class="nav-links">
     <li><a href="#grupo">El Grupo</a></li>
     <li><a href="#marcas">Nuestras Marcas</a></li>
@@ -617,9 +661,12 @@ footer{
     <li><a href="#historia">Historia</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <a href="#contacto" class="nav-cta">Hablar con un experto</a>
-  <div class="nav-hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+  <!-- CTA derecha -->
+  <div class="nav-right">
+    <a href="#contacto" class="nav-cta">Hablar con un experto</a>
+    <div class="nav-hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
@@ -722,21 +769,24 @@ footer{
   <p class="section-intro">Cada empresa del grupo fue creada para resolver un problema específico con profundidad real. No son divisiones administrativas — son marcas con identidad, especialización y propósito propios.</p>
 
   <div class="brands-grid">
-    <a href="ayc.html" class="brand-card">
+    <a href="https://analisisyconsultorias.com" target="_blank" class="brand-card">
       <span class="brand-card-tag">Consultoría tributaria · contable</span>
-      <img src="https://i.imgur.com/XXXXXXX.png" alt="A&C" class="brand-card-logo">
+      <img src="https://i.imgur.com/LOGO_AC.png" alt="Análisis &amp; Consultorías" class="brand-card-logo">
+      <div class="brand-card-name">Análisis &amp;<br>Consultorías</div>
       <p class="brand-card-desc">La marca fundacional del grupo. Asesoría tributaria, contable y administrativa para personas naturales y jurídicas que merecen ser tratadas con la inteligencia de una empresa.</p>
       <span class="brand-card-arrow">Ver marca →</span>
     </a>
     <a href="sadi.html" class="brand-card">
       <span class="brand-card-tag">Software · tecnología financiera</span>
-       <img src="https://i.imgur.com/XXXXXXX.png" alt="SADI" class="brand-card-logo">
+      <img src="https://i.imgur.com/LOGO_SADI.png" alt="SADI" class="brand-card-logo">
+      <div class="brand-card-name">SADI</div>
       <p class="brand-card-desc">Sistema contable, facturación electrónica y nómina desarrollado en Colombia para empresas colombianas. Hecho desde adentro de la práctica contable real.</p>
       <span class="brand-card-arrow">Ver plataforma →</span>
     </a>
     <a href="fasi.html" class="brand-card">
       <span class="brand-card-tag">Fábrica de Sistemas de Información</span>
-       <img src="https://i.imgur.com/XXXXXXX.png" alt="FASI" class="brand-card-logo">
+      <img src="https://i.imgur.com/LOGO_FASI.png" alt="FASI" class="brand-card-logo">
+      <div class="brand-card-name">FASI</div>
       <p class="brand-card-desc">Sistemas de información desarrollados, optimizados y adaptados a las especificaciones de su proyecto. Procesos, decisiones e información ejecutiva.</p>
       <span class="brand-card-arrow">Ver marca →</span>
     </a>
@@ -744,19 +794,22 @@ footer{
   <div class="brands-grid-bottom">
     <a href="traco.html" class="brand-card">
       <span class="brand-card-tag">Trámites Colombia</span>
-       <img src="https://i.imgur.com/XXXXXXX.png" alt="TRACO" class="brand-card-logo">
+      <img src="https://i.imgur.com/LOGO_TRACO.png" alt="TRACO" class="brand-card-logo">
+      <div class="brand-card-name">TRACO</div>
       <p class="brand-card-desc">Gestión ágil de trámites ante entidades del Estado colombiano para personas naturales y empresas. Sin filas, con trazabilidad total.</p>
       <span class="brand-card-arrow">Ver marca →</span>
     </a>
     <a href="softprocess.html" class="brand-card">
       <span class="brand-card-tag">Automatización BPM · RPA</span>
-       <img src="https://i.imgur.com/XXXXXXX.png" alt="SOFTPROCESS" class="brand-card-logo">
+      <img src="https://i.imgur.com/LOGO_SOFTPROCESS.png" alt="SoftProcess" class="brand-card-logo">
+      <div class="brand-card-name">SOFTPROCESS</div>
       <p class="brand-card-desc">Automatización de procesos empresariales con BPM y RPA. Procesos más inteligentes, menos errores, más tiempo para lo que importa.</p>
       <span class="brand-card-arrow">Ver marca →</span>
     </a>
     <a href="contadores-colombia.html" class="brand-card">
       <span class="brand-card-tag">Comunidad · Formación · Contenido</span>
-       <img src="https://i.imgur.com/XXXXXXX.png" alt="CONTADORES-EN-COLOMBIA" class="brand-card-logo">
+      <img src="https://i.imgur.com/LOGO_CEC.png" alt="Contadores en Colombia" class="brand-card-logo">
+      <div class="brand-card-name">Contadores en<br>Colombia</div>
       <p class="brand-card-desc">La comunidad profesional contable más activa del país. Formación, actualización normativa y red de colegas para el contador moderno.</p>
       <span class="brand-card-arrow">Ver comunidad →</span>
     </a>
