@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contadores en Colombia · Comunidad · Formación · Contenido</title>
+<meta name="description" content="Contadores en Colombia — La comunidad profesional contable más activa del país. Formación, actualización normativa y red profesional para el contador moderno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian:  #0F0E0C;
+  --carbon:    #2A2620;
+  --oro:       #C9A96E;
+  --oro-deep:  #A8803E;
+  --marfil:    #F7F4EF;
+  --linen:     #EDE8DF;
+  --parchment: #F9F7F3;
+  --topo:      #8A7968;
+  --topo-dark: #5C5244;
+  --ink:       #1E1B16;
+  --jade:      #1A7A52;
+
+  /* Paleta CEC — tricolor con dignidad */
+  --cec-amarillo: #D4A017;
+  --cec-rojo:     #C0392B;
+  --cec-azul:     #1A3A6B;
+  --cec-amarillo-light: #FBF3DC;
+  --cec-rojo-light:     #FBECEB;
+  --cec-azul-light:     #E8EDF6;
+
+  --border-cec:     rgba(26,58,107,0.15);
+  --border-cec-mid: rgba(26,58,107,0.30);
+  --border-oro:     rgba(201,169,110,0.22);
+  --border-ink:     rgba(30,27,22,0.10);
+  --border-ink-mid: rgba(30,27,22,0.18);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--marfil);color:var(--ink);
+  font-family:'Syne',sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+
+/* ── TOPBAR GRUPO ── */
+.grupo-bar{
+  background:var(--obsidian);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:36px;
+}
+.grupo-bar-left{
+  display:flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--topo);
+}
+.grupo-bar-left a{color:var(--oro);text-decoration:none;transition:opacity .2s;}
+.grupo-bar-left a:hover{opacity:.75;}
+.grupo-bar-sep{color:rgba(138,121,104,.3);}
+.grupo-bar-right{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.4);}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:68px;
+  background:rgba(247,244,239,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-cec);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 1px 20px rgba(26,58,107,0.07);}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{
+  display:flex;gap:2px;align-items:flex-end;height:28px;
+}
+.nlm-bar{width:7px;border-radius:1px;}
+.nlm-b1{background:var(--cec-amarillo);height:16px;}
+.nlm-b2{background:var(--cec-rojo);height:22px;}
+.nlm-b3{background:var(--cec-azul);height:28px;}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:16px;color:var(--ink);letter-spacing:.02em;line-height:1.2;
+}
+.nav-logo-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;color:var(--topo);text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--topo-dark);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--cec-azul);}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--marfil);background:var(--cec-azul);
+  padding:10px 20px;text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:#152e58;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);}
+
+/* ── HERO ── */
+.hero{
+  min-height:calc(100vh - 104px);
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 90% 50%, rgba(26,58,107,0.05) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-left{
+  padding:72px 60px 72px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border-cec);
+  position:relative;z-index:1;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cec-azul);margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--cec-azul);}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(44px,5vw,72px);line-height:1.03;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:8px;
+}
+.hero-title em{font-style:italic;color:var(--cec-azul);}
+.hero-title strong{font-weight:600;display:block;}
+.hero-rule{
+  width:60px;height:4px;margin:28px 0;
+  background:linear-gradient(90deg, var(--cec-amarillo) 0%, var(--cec-rojo) 50%, var(--cec-azul) 100%);
+}
+.hero-desc{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:420px;margin-bottom:44px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-cec{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--marfil);background:var(--cec-azul);
+  padding:16px 32px;text-decoration:none;transition:background .2s;display:inline-block;
+}
+.btn-cec:hover{background:#152e58;}
+.btn-ghost{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cec-azul);border:1px solid var(--border-cec-mid);
+  padding:15px 32px;text-decoration:none;
+  transition:all .2s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--cec-azul);background:var(--cec-azul-light);}
+
+/* Hero derecho — tricolor */
+.hero-right{
+  display:grid;grid-template-rows:1fr 1fr 1fr;
+  position:relative;
+}
+.hero-pillar{
+  padding:40px 48px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+}
+.hp-formacion{background:var(--cec-azul);}
+.hp-comunidad{background:var(--cec-rojo);}
+.hp-contenido{background:var(--cec-amarillo);}
+.hp-num{
+  font-family:'DM Mono',monospace;font-size:48px;
+  font-weight:300;opacity:.12;line-height:1;margin-bottom:8px;
+  color:#fff;
+}
+.hp-contenido .hp-num{color:var(--obsidian);}
+.hp-tag{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.55);margin-bottom:6px;
+}
+.hp-contenido .hp-tag{color:rgba(15,14,12,0.45);}
+.hp-name{
+  font-family:'Cormorant Garamond',serif;font-size:26px;
+  font-weight:400;color:#fff;line-height:1.2;
+}
+.hp-contenido .hp-name{color:var(--obsidian);}
+.hp-arrow{
+  position:absolute;right:24px;bottom:24px;
+  font-family:'DM Mono',monospace;font-size:18px;
+  color:rgba(255,255,255,0.3);
+}
+.hp-contenido .hp-arrow{color:rgba(15,14,12,0.25);}
+
+/* ── SECCIONES ── */
+section{padding:88px 80px;border-bottom:1px solid var(--border-ink);}
+section.alt{background:var(--linen);}
+section.parch{background:var(--parchment);}
+section.dark-cec{
+  background:var(--cec-azul);
+  border-color:rgba(255,255,255,0.08);
+}
+
+.sec-header{display:flex;align-items:flex-start;gap:48px;margin-bottom:64px;}
+.sec-num{
+  font-family:'DM Mono',monospace;font-size:10px;
+  color:var(--cec-azul);letter-spacing:.1em;padding-top:6px;
+  white-space:nowrap;flex-shrink:0;
+}
+.sec-num.on-dark{color:var(--cec-amarillo);}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.2em;color:var(--topo);text-transform:uppercase;margin-bottom:12px;
+}
+.sec-label.on-dark{color:rgba(255,255,255,.4);}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:var(--ink);
+}
+.sec-title em{font-style:italic;color:var(--cec-azul);}
+.sec-title.on-dark{color:#fff;}
+.sec-title.on-dark em{color:var(--cec-amarillo);}
+.sec-intro{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:640px;margin-bottom:52px;
+}
+.sec-intro.on-dark{color:rgba(255,255,255,.6);}
+
+/* ── TRES PILARES ── */
+.pilares-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-cec);border:1px solid var(--border-cec);
+}
+.pilar-card{
+  padding:44px 36px;position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.pilar-formacion{background:var(--marfil);}
+.pilar-comunidad{background:var(--marfil);}
+.pilar-contenido{background:var(--marfil);}
+.pilar-card:hover{background:var(--linen);}
+.pilar-stripe{
+  position:absolute;top:0;left:0;right:0;height:4px;
+}
+.stripe-f{background:var(--cec-azul);}
+.stripe-c{background:var(--cec-rojo);}
+.stripe-co{background:var(--cec-amarillo);}
+.pilar-icon{
+  width:44px;height:44px;display:flex;
+  align-items:center;justify-content:center;
+  margin-bottom:20px;border:1px solid;
+}
+.pilar-icon-f{border-color:rgba(26,58,107,.2);background:var(--cec-azul-light);}
+.pilar-icon-c{border-color:rgba(192,57,43,.2);background:var(--cec-rojo-light);}
+.pilar-icon-co{border-color:rgba(212,160,23,.2);background:var(--cec-amarillo-light);}
+.pilar-icon svg{width:20px;height:20px;stroke-width:1.5;fill:none;stroke-linecap:round;}
+.pilar-tag{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.tag-f{color:var(--cec-azul);}
+.tag-c{color:var(--cec-rojo);}
+.tag-co{color:var(--cec-amarillo);}
+.pilar-title{
+  font-family:'Cormorant Garamond',serif;font-size:24px;
+  font-weight:400;color:var(--ink);margin-bottom:14px;
+}
+.pilar-desc{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--topo-dark);line-height:1.6;margin-bottom:24px;
+}
+.pilar-items{list-style:none;}
+.pilar-items li{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--topo-dark);padding:8px 0;
+  border-bottom:1px solid var(--border-ink);
+  display:flex;align-items:center;gap:8px;
+}
+.pilar-items li:last-child{border-bottom:none;}
+.pi-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.dot-f{background:var(--cec-azul);}
+.dot-c{background:var(--cec-rojo);}
+.dot-co{background:var(--cec-amarillo);}
+
+/* ── FORMACIÓN ── */
+.formacion-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border-cec);border:1px solid var(--border-cec);
+  margin-bottom:48px;
+}
+.formacion-card{
+  background:var(--marfil);padding:36px 32px;
+  transition:background .2s;position:relative;overflow:hidden;
+}
+.formacion-card:hover{background:var(--cec-azul-light);}
+.fc-badge{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:4px 10px;margin-bottom:14px;display:inline-block;
+}
+.fc-badge-live{background:var(--cec-rojo);color:#fff;}
+.fc-badge-online{background:var(--cec-azul-light);color:var(--cec-azul);}
+.fc-badge-cert{background:var(--cec-amarillo-light);color:var(--cec-amarillo);}
+.fc-badge-prem{background:var(--obsidian);color:var(--oro);}
+.fc-title{
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  font-weight:400;color:var(--ink);margin-bottom:8px;line-height:1.2;
+}
+.fc-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.55;margin-bottom:16px;
+}
+.fc-meta{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.08em;color:var(--topo);text-transform:uppercase;
+}
+
+/* ── COMUNIDAD STATS ── */
+.comunidad-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.1);
+  margin-bottom:48px;
+}
+.cs-cell{
+  background:rgba(255,255,255,0.06);
+  padding:32px 24px;text-align:center;
+}
+.cs-num{
+  font-family:'Cormorant Garamond',serif;font-size:48px;
+  font-weight:300;color:#fff;line-height:1;margin-bottom:6px;
+}
+.cs-num em{font-style:normal;color:var(--cec-amarillo);}
+.cs-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+}
+.comunidad-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.1);
+}
+.cg-card{background:rgba(255,255,255,.05);padding:32px 28px;}
+.cg-icon{
+  width:40px;height:40px;margin-bottom:14px;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.cg-icon svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;stroke-linecap:round;opacity:.7;}
+.cg-title{
+  font-family:'Syne',sans-serif;font-size:12px;
+  font-weight:600;text-transform:uppercase;letter-spacing:.1em;
+  color:#fff;margin-bottom:8px;
+}
+.cg-desc{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:rgba(255,255,255,.55);line-height:1.6;
+}
+
+/* ── CONTENIDO ── */
+.contenido-grid{
+  display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start;
+}
+.articulos-list{}
+.articulo-item{
+  padding:24px 0;border-bottom:1px solid var(--border-ink);
+  display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;
+}
+.articulo-item:last-child{border-bottom:none;padding-bottom:0;}
+.art-num{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--cec-azul);letter-spacing:.1em;padding-top:4px;min-width:28px;
+}
+.art-content{}
+.art-cat{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;
+}
+.art-cat-niif{color:var(--cec-azul);}
+.art-cat-dian{color:var(--cec-rojo);}
+.art-cat-niif2{color:var(--cec-amarillo);}
+.art-cat-lab{color:var(--jade);}
+.art-title{
+  font-family:'Cormorant Garamond',serif;font-size:20px;
+  font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.2;
+}
+.art-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.5;
+}
+/* Sidebar de suscripción */
+.sidebar-sub{
+  background:var(--cec-azul);
+  padding:36px 28px;position:sticky;top:96px;
+}
+.ss-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cec-amarillo);margin-bottom:16px;
+}
+.ss-title{
+  font-family:'Cormorant Garamond',serif;font-size:26px;
+  font-weight:300;color:#fff;line-height:1.25;margin-bottom:16px;
+}
+.ss-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:rgba(255,255,255,.55);line-height:1.55;margin-bottom:24px;
+}
+.ss-input{
+  width:100%;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-weight:300;
+  padding:12px 14px;outline:none;transition:border-color .2s;margin-bottom:10px;
+}
+.ss-input::placeholder{color:rgba(255,255,255,.35);}
+.ss-input:focus{border-color:var(--cec-amarillo);}
+.ss-btn{
+  width:100%;font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cec-azul);background:var(--cec-amarillo);
+  border:none;padding:14px;cursor:pointer;transition:opacity .2s;
+}
+.ss-btn:hover{opacity:.88;}
+.ss-note{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.08em;color:rgba(255,255,255,.25);
+  text-transform:uppercase;margin-top:10px;text-align:center;
+}
+
+/* ── CONTACTO / UNIRSE ── */
+.unirse-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border-cec);border:1px solid var(--border-cec);
+}
+.unirse-form-cell{background:var(--parchment);padding:52px 48px;}
+.unirse-info-cell{background:var(--linen);padding:52px 40px;}
+.form-group{margin-bottom:20px;}
+.form-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--topo);display:block;margin-bottom:8px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input,.form-select,.form-textarea{
+  width:100%;background:var(--marfil);
+  border:1px solid var(--border-ink-mid);
+  color:var(--ink);font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;padding:13px 15px;
+  outline:none;transition:border-color .2s;appearance:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--cec-azul);}
+.form-textarea{resize:vertical;min-height:100px;}
+.form-submit{
+  width:100%;font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--marfil);background:var(--cec-azul);
+  border:none;padding:17px;cursor:pointer;transition:background .2s;
+}
+.form-submit:hover{background:#152e58;}
+.ui-title{
+  font-family:'Cormorant Garamond',serif;font-size:28px;
+  font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:24px;
+}
+.ui-benefit{
+  padding:14px 0;border-bottom:1px solid var(--border-ink);
+  display:flex;align-items:flex-start;gap:12px;
+}
+.ui-benefit:last-child{border-bottom:none;}
+.ub-stripe{width:3px;height:100%;min-height:20px;flex-shrink:0;border-radius:2px;}
+.ub-text{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--topo-dark);line-height:1.5;
+}
+.ub-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--topo);margin-bottom:3px;
+}
+.grupo-badge{
+  margin-top:28px;padding:16px 18px;background:var(--obsidian);
+  display:flex;align-items:center;gap:12px;
+}
+.gb-dot{width:8px;height:8px;border-radius:50%;background:var(--oro);flex-shrink:0;}
+.gb-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--topo);margin-bottom:4px;}
+.gb-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--oro);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--obsidian);border-top:1px solid rgba(201,169,110,.12);
+  padding:48px 80px 32px;
+}
+.footer-inner{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:40px;
+  padding-bottom:36px;border-bottom:1px solid rgba(201,169,110,.1);margin-bottom:28px;
+}
+.footer-brand-name{
+  font-family:'Cormorant Garamond',serif;font-size:20px;
+  font-weight:400;color:var(--marfil);margin-bottom:4px;
+}
+.footer-brand-sub{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--topo);text-transform:uppercase;margin-bottom:16px;}
+.footer-brand-desc{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;color:var(--topo);line-height:1.6;max-width:260px;}
+.footer-flag{display:flex;gap:3px;margin-bottom:14px;}
+.ff-bar{height:5px;border-radius:1px;}
+.ff-b1{background:var(--cec-amarillo);width:24px;}
+.ff-b2{background:var(--cec-rojo);width:16px;}
+.ff-b3{background:var(--cec-azul);width:16px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:9px;}
+.footer-links a{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;color:var(--topo);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--marfil);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--topo);}
+.footer-sema{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.45);}
+.footer-sema a{color:rgba(201,169,110,.45);text-decoration:none;}
+.footer-sema a:hover{color:var(--oro);}
+
+/* ── ANIMS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.fade-up{animation:fadeUp .6s ease both;}
+.d1{animation-delay:.08s;}.d2{animation-delay:.2s;}
+.d3{animation-delay:.33s;}.d4{animation-delay:.46s;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .grupo-bar,.nav-links{display:none;}
+  nav{padding:0 32px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:64px 32px;}
+  section{padding:64px 32px;}
+  .pilares-grid{grid-template-columns:1fr 1fr;}
+  .formacion-grid{grid-template-columns:1fr 1fr;}
+  .comunidad-stats{grid-template-columns:1fr 1fr;}
+  .comunidad-grid{grid-template-columns:1fr 1fr;}
+  .contenido-grid{grid-template-columns:1fr;}
+  .sidebar-sub{position:static;}
+  .unirse-grid{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:28px;}
+  .sec-header{flex-direction:column;gap:12px;}
+}
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-hamburger{display:flex;}
+  section{padding:52px 20px;}
+  .hero-left{padding:52px 20px;}
+  .pilares-grid,.formacion-grid,.comunidad-grid{grid-template-columns:1fr;}
+  .comunidad-stats{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{padding:40px 20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ══ -->
+<div class="grupo-bar">
+  <div class="grupo-bar-left">
+    <span>Una marca de</span>
+    <span class="grupo-bar-sep">/</span>
+    <a href="index-claro.html">Grupo Análisis &amp; Consultorías</a>
+  </div>
+  <div class="grupo-bar-right">A&amp;C · SADI · FASI · TRACO · SOFTPROCESS</div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">
+      <div class="nlm-bar nlm-b1"></div>
+      <div class="nlm-bar nlm-b2"></div>
+      <div class="nlm-bar nlm-b3"></div>
+    </div>
+    <div>
+      <div class="nav-logo-text">Contadores en Colombia</div>
+      <div class="nav-logo-sub">Comunidad · Formación · Contenido</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#formacion">Formación</a></li>
+    <li><a href="#comunidad">Comunidad</a></li>
+    <li><a href="#contenido">Contenido</a></li>
+    <li><a href="#unirse">Unirse</a></li>
+  </ul>
+  <a href="#unirse" class="nav-cta">Hacer parte</a>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up d1">Colombia · Comunidad profesional contable</div>
+    <h1 class="hero-title fade-up d2">
+      El contador
+      <em>colombiano</em>
+      <strong>merece más.</strong>
+    </h1>
+    <div class="hero-rule fade-up d3"></div>
+    <p class="hero-desc fade-up d3">
+      Contadores en Colombia es la comunidad profesional contable más activa del país. Formación de alto nivel, actualización normativa permanente y una red de colegas que entienden los mismos retos que usted enfrenta cada día.
+    </p>
+    <div class="hero-actions fade-up d4">
+      <a href="#unirse" class="btn-cec">Hacer parte de la comunidad</a>
+      <a href="#formacion" class="btn-ghost">Ver formación</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <a href="#formacion" class="hero-pillar hp-formacion">
+      <div class="hp-num">01</div>
+      <div class="hp-tag">Primer pilar</div>
+      <div class="hp-name">Formación y actualización normativa</div>
+      <div class="hp-arrow">→</div>
+    </a>
+    <a href="#comunidad" class="hero-pillar hp-comunidad">
+      <div class="hp-num">02</div>
+      <div class="hp-tag">Segundo pilar</div>
+      <div class="hp-name">Red profesional y comunidad gremial</div>
+      <div class="hp-arrow">→</div>
+    </a>
+    <a href="#contenido" class="hero-pillar hp-contenido">
+      <div class="hp-num">03</div>
+      <div class="hp-tag">Tercer pilar</div>
+      <div class="hp-name">Contenido y medios especializados</div>
+      <div class="hp-arrow">→</div>
+    </a>
+  </div>
+</div>
+
+<!-- ══ TRES PILARES ══ -->
+<section class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">01 —</div>
+    <div>
+      <div class="sec-label">Lo que hacemos</div>
+      <h2 class="sec-title">Tres pilares.<br><em>Una sola comunidad.</em></h2>
+    </div>
+  </div>
+  <div class="pilares-grid">
+    <div class="pilar-card">
+      <div class="pilar-stripe stripe-f"></div>
+      <div class="pilar-icon pilar-icon-f">
+        <svg viewBox="0 0 24 24" stroke="var(--cec-azul)"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <span class="pilar-tag tag-f">Primer pilar</span>
+      <div class="pilar-title">Formación y actualización</div>
+      <div class="pilar-desc">Webinars, diplomados y cursos especializados en tributación, NIIF, nómina y contabilidad pública colombiana. Formación que el mercado exige y que las universidades no actualizan a tiempo.</div>
+      <ul class="pilar-items">
+        <li><span class="pi-dot dot-f"></span>Webinars semanales en vivo</li>
+        <li><span class="pi-dot dot-f"></span>Diplomados en NIIF y tributación</li>
+        <li><span class="pi-dot dot-f"></span>Certificaciones profesionales</li>
+        <li><span class="pi-dot dot-f"></span>Biblioteca de grabaciones</li>
+        <li><span class="pi-dot dot-f"></span>Actualización DIAN en tiempo real</li>
+      </ul>
+    </div>
+
+    <div class="pilar-card">
+      <div class="pilar-stripe stripe-c"></div>
+      <div class="pilar-icon pilar-icon-c">
+        <svg viewBox="0 0 24 24" stroke="var(--cec-rojo)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <span class="pilar-tag tag-c">Segundo pilar</span>
+      <div class="pilar-title">Red profesional</div>
+      <div class="pilar-desc">Una red activa de contadores, revisores fiscales y auxiliares contables en todo Colombia. El espacio donde los colegas se encuentran, colaboran y se recomiendan.</div>
+      <ul class="pilar-items">
+        <li><span class="pi-dot dot-c"></span>Directorio de profesionales</li>
+        <li><span class="pi-dot dot-c"></span>Grupos por especialidad</li>
+        <li><span class="pi-dot dot-c"></span>Foros de consulta técnica</li>
+        <li><span class="pi-dot dot-c"></span>Mentorías entre pares</li>
+        <li><span class="pi-dot dot-c"></span>Eventos presenciales y virtuales</li>
+      </ul>
+    </div>
+
+    <div class="pilar-card">
+      <div class="pilar-stripe stripe-co"></div>
+      <div class="pilar-icon pilar-icon-co">
+        <svg viewBox="0 0 24 24" stroke="var(--cec-amarillo)"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <span class="pilar-tag tag-co">Tercer pilar</span>
+      <div class="pilar-title">Contenido especializado</div>
+      <div class="pilar-desc">Artículos técnicos, análisis normativos, guías prácticas y noticias del sector contable colombiano. Contenido que informa, forma criterio y simplifica la complejidad regulatoria.</div>
+      <ul class="pilar-items">
+        <li><span class="pi-dot dot-co"></span>Blog técnico semanal</li>
+        <li><span class="pi-dot dot-co"></span>Análisis de normas DIAN</li>
+        <li><span class="pi-dot dot-co"></span>Guías prácticas descargables</li>
+        <li><span class="pi-dot dot-co"></span>Newsletter quincenal</li>
+        <li><span class="pi-dot dot-co"></span>Podcast de actualidad contable</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FORMACIÓN ══ -->
+<section id="formacion" class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">02 —</div>
+    <div>
+      <div class="sec-label">Formación profesional</div>
+      <h2 class="sec-title">Actualícese con quien<br><em>entiende el contexto colombiano</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro">La normativa tributaria y contable en Colombia cambia constantemente. Cada reforma tributaria, cada circular de la DIAN, cada modificación NIIF — en Contadores en Colombia lo analizamos antes de que le llegue como requerimiento.</p>
+
+  <div class="formacion-grid">
+    <div class="formacion-card">
+      <span class="fc-badge fc-badge-live">En vivo</span>
+      <div class="fc-title">Reforma tributaria 2025: impacto para personas naturales y pymes</div>
+      <div class="fc-desc">Análisis completo de los cambios normativos, nuevas tarifas y obligaciones para el período fiscal. Con casos prácticos y simulaciones de liquidación.</div>
+      <div class="fc-meta">Webinar · 3 horas · Certificado de asistencia</div>
+    </div>
+    <div class="formacion-card">
+      <span class="fc-badge fc-badge-online">Online</span>
+      <div class="fc-title">NIIF para Pymes: implementación práctica paso a paso</div>
+      <div class="fc-desc">Diplomado de 40 horas para contadores que necesitan implementar o auditar NIIF para Pymes en empresas colombianas. Desde el diagnóstico hasta el primer balance.</div>
+      <div class="fc-meta">Diplomado · 40 horas · 8 semanas</div>
+    </div>
+    <div class="formacion-card">
+      <span class="fc-badge fc-badge-cert">Certificado</span>
+      <div class="fc-title">Régimen Simple de Tributación: todo lo que debe saber en 2026</div>
+      <div class="fc-desc">Requisitos de acceso, tarifas consolidadas, declaración y pago anticipado. El módulo más solicitado de la plataforma por la confusión que genera este régimen.</div>
+      <div class="fc-meta">Curso · 8 horas · Evaluación final</div>
+    </div>
+    <div class="formacion-card">
+      <span class="fc-badge fc-badge-prem">Premium</span>
+      <div class="fc-title">Facturación electrónica avanzada y nómina electrónica DIAN</div>
+      <div class="fc-desc">Dominio completo del sistema de facturación electrónica, contingencias, notas crédito, y el sistema de nómina electrónica para todos los tipos de vinculación laboral.</div>
+      <div class="fc-meta">Curso · 12 horas · Acceso a grabación</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:32px;">
+    <a href="#unirse" class="btn-cec">Ver catálogo completo de formación</a>
+  </div>
+</section>
+
+<!-- ══ COMUNIDAD ══ -->
+<section id="comunidad" class="dark-cec reveal">
+  <div class="sec-header">
+    <div class="sec-num on-dark">03 —</div>
+    <div>
+      <div class="sec-label on-dark">Red profesional</div>
+      <h2 class="sec-title on-dark">La comunidad contable<br><em>más activa de Colombia</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro on-dark">Un contador que no tiene con quién consultarse es un contador vulnerable. La red de Contadores en Colombia existe para que nadie enfrente solo los retos de la profesión.</p>
+
+  <div class="comunidad-stats">
+    <div class="cs-cell">
+      <div class="cs-num">5<em>K+</em></div>
+      <div class="cs-label">Contadores registrados</div>
+    </div>
+    <div class="cs-cell">
+      <div class="cs-num">32</div>
+      <div class="cs-label">Ciudades con presencia</div>
+    </div>
+    <div class="cs-cell">
+      <div class="cs-num">120<em>+</em></div>
+      <div class="cs-label">Eventos al año</div>
+    </div>
+    <div class="cs-cell">
+      <div class="cs-num">20<em>+</em></div>
+      <div class="cs-label">Años de trayectoria</div>
+    </div>
+  </div>
+
+  <div class="comunidad-grid">
+    <div class="cg-card">
+      <div class="cg-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="cg-title">Foros de consulta técnica</div>
+      <div class="cg-desc">Plantee sus casos a colegas expertos. Respuestas reales de profesionales que han resuelto el mismo problema en el contexto colombiano.</div>
+    </div>
+    <div class="cg-card">
+      <div class="cg-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="cg-title">Eventos presenciales y virtuales</div>
+      <div class="cg-desc">Desde charlas técnicas hasta encuentros regionales. El espacio donde los contadores colombianos se conocen, debaten y forjan alianzas profesionales.</div>
+    </div>
+    <div class="cg-card">
+      <div class="cg-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="cg-title">Mentoría entre pares</div>
+      <div class="cg-desc">Contadores con experiencia acompañan a quienes inician. Un sistema de mentoría que devuelve a la comunidad lo que la comunidad dio.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTENIDO ══ -->
+<section id="contenido" class="parch reveal">
+  <div class="sec-header">
+    <div class="sec-num">04 —</div>
+    <div>
+      <div class="sec-label">Contenido técnico</div>
+      <h2 class="sec-title">La norma explicada<br><em>en lenguaje de trabajo</em></h2>
+    </div>
+  </div>
+
+  <div class="contenido-grid">
+    <div class="articulos-list">
+      <div class="articulo-item">
+        <div class="art-num">01</div>
+        <div class="art-content">
+          <div class="art-cat art-cat-niif">NIIF · Actualización</div>
+          <div class="art-title">Cambios en el tratamiento de arrendamientos bajo NIIF 16: lo que cambia para pymes en 2026</div>
+          <div class="art-desc">Análisis práctico de los ajustes en el reconocimiento de activos por derecho de uso y pasivos por arrendamiento que afectan a empresas colombianas aplicantes de NIIF plenas.</div>
+        </div>
+      </div>
+      <div class="articulo-item">
+        <div class="art-num">02</div>
+        <div class="art-content">
+          <div class="art-cat art-cat-dian">DIAN · Normativa</div>
+          <div class="art-title">Requerimientos de información exógena 2025: plazos, formatos y obligados</div>
+          <div class="art-desc">Guía completa de los formatos de medios magnéticos exigidos por la DIAN para el año gravable 2025: quiénes están obligados, qué información reportar y cómo evitar las sanciones más comunes.</div>
+        </div>
+      </div>
+      <div class="articulo-item">
+        <div class="art-num">03</div>
+        <div class="art-content">
+          <div class="art-cat art-cat-niif2">Tributación · Análisis</div>
+          <div class="art-title">Planeación tributaria legítima para el contador: estrategias que protegen al cliente y al profesional</div>
+          <div class="art-desc">La diferencia entre la economía de opción y la evasión. Cómo acompañar al cliente en una planeación fiscal responsable sin exponer su licencia profesional.</div>
+        </div>
+      </div>
+      <div class="articulo-item">
+        <div class="art-num">04</div>
+        <div class="art-content">
+          <div class="art-cat art-cat-lab">Laboral · Nómina</div>
+          <div class="art-title">Liquidación de contrato en 2026: auxilio de cesantías, intereses y prima bajo la nueva normativa</div>
+          <div class="art-desc">Casos prácticos de liquidación con los nuevos valores del SMMLV, cálculo de proporcionales, y errores frecuentes que generan contingencias laborales en las pymes colombianas.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-sub">
+      <div class="ss-label">Newsletter quincenal</div>
+      <div class="ss-title">La actualidad contable colombiana en su correo.</div>
+      <div class="ss-desc">Cada quince días, los cambios normativos más relevantes, un análisis técnico y los recursos más descargados de la semana — sin spam, sin relleno.</div>
+      <input type="email" class="ss-input" placeholder="Su correo profesional">
+      <button class="ss-btn" onclick="suscribir()">Suscribirme →</button>
+      <div class="ss-note">Gratuito · +3.000 contadores suscritos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ UNIRSE ══ -->
+<section id="unirse" class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">05 —</div>
+    <div>
+      <div class="sec-label">Haga parte</div>
+      <h2 class="sec-title">La comunidad crece<br><em>con cada nuevo colega</em></h2>
+    </div>
+  </div>
+
+  <div class="unirse-grid">
+    <div class="unirse-form-cell">
+      <p class="sec-intro" style="font-size:17px;margin-bottom:28px;">Regístrese como miembro de la comunidad. El acceso a la red, el contenido básico y los foros de consulta son gratuitos.</p>
+      <form onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" class="form-input" placeholder="Su nombre">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tarjeta profesional</label>
+            <input type="text" class="form-input" placeholder="T.P. No.">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Correo electrónico</label>
+          <input type="email" class="form-input" placeholder="correo@profesional.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ciudad</label>
+          <select class="form-select">
+            <option>Medellín</option><option>Bogotá</option>
+            <option>Cali</option><option>Barranquilla</option>
+            <option>Otra ciudad</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Especialidad principal</label>
+          <select class="form-select">
+            <option>Tributación y DIAN</option>
+            <option>Contabilidad y NIIF</option>
+            <option>Revisoría fiscal y auditoría</option>
+            <option>Nómina y seguridad social</option>
+            <option>Contabilidad pública</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Registrarme en la comunidad →</button>
+      </form>
+    </div>
+
+    <div class="unirse-info-cell">
+      <div class="ui-title">Lo que incluye ser parte de Contadores en Colombia.</div>
+      <div class="ui-benefit">
+        <div class="ub-stripe" style="background:var(--cec-azul);"></div>
+        <div>
+          <div class="ub-label">Formación</div>
+          <div class="ub-text">Acceso a webinars mensuales gratuitos, biblioteca de grabaciones y descuentos en diplomados y certificaciones.</div>
+        </div>
+      </div>
+      <div class="ui-benefit">
+        <div class="ub-stripe" style="background:var(--cec-rojo);"></div>
+        <div>
+          <div class="ub-label">Comunidad</div>
+          <div class="ub-text">Directorio profesional, foros de consulta técnica, acceso a grupos especializados y eventos de la red.</div>
+        </div>
+      </div>
+      <div class="ui-benefit">
+        <div class="ub-stripe" style="background:var(--cec-amarillo);"></div>
+        <div>
+          <div class="ub-label">Contenido</div>
+          <div class="ub-text">Newsletter quincenal, acceso a guías prácticas descargables y artículos de análisis técnico del sector.</div>
+        </div>
+      </div>
+      <div class="ui-benefit" style="border-bottom:none;">
+        <div class="ub-stripe" style="background:var(--oro);"></div>
+        <div>
+          <div class="ub-label">Respaldo del Grupo A&amp;C</div>
+          <div class="ub-text">Conexión con el ecosistema del grupo: acceso prioritario a SADI, A&C, FASI y las demás marcas del grupo para sus necesidades profesionales.</div>
+        </div>
+      </div>
+      <div class="grupo-badge">
+        <div class="gb-dot"></div>
+        <div>
+          <div class="gb-label">Parte de</div>
+          <div class="gb-name">Grupo Análisis &amp; Consultorías</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-flag">
+        <div class="ff-bar ff-b1"></div>
+        <div class="ff-bar ff-b2"></div>
+        <div class="ff-bar ff-b3"></div>
+      </div>
+      <div class="footer-brand-name">Contadores en Colombia</div>
+      <div class="footer-brand-sub">Comunidad · Formación · Contenido</div>
+      <p class="footer-brand-desc">La comunidad profesional contable más activa de Colombia. Parte del ecosistema del Grupo Análisis &amp; Consultorías desde 2006.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">La comunidad</div>
+      <ul class="footer-links">
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#comunidad">Red profesional</a></li>
+        <li><a href="#contenido">Contenido técnico</a></li>
+        <li><a href="#unirse">Registrarse</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">El grupo</div>
+      <ul class="footer-links">
+        <li><a href="index-claro.html">Portal del Grupo</a></li>
+        <li><a href="analisis-consultorias.html">A&amp;C</a></li>
+        <li><a href="fasi.html">FASI</a></li>
+        <li><a href="#">SADI</a></li>
+        <li><a href="#">TRACO · SOFTPROCESS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Contadores en Colombia · Una marca Grupo A&amp;C</div>
+    <div class="footer-sema">Identidad y portal · <a href="#">SEMA · Brand Intelligence</a></div>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((e) => {
+  e.forEach(r => { if(r.isIntersecting){ r.target.classList.add('visible'); obs.unobserve(r.target); }});
+},{ threshold:0.07 });
+reveals.forEach(el => obs.observe(el));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Bienvenido a la comunidad ✓';
+  btn.style.background = 'var(--jade)';
+  setTimeout(() => { btn.textContent = 'Registrarme en la comunidad →'; btn.style.background = 'var(--cec-azul)'; }, 4000);
+}
+function suscribir() {
+  const btn = document.querySelector('.ss-btn');
+  btn.textContent = 'Suscrito ✓';
+  btn.style.background = 'var(--jade)';
+  btn.style.color = '#fff';
+  setTimeout(() => { btn.textContent = 'Suscribirme →'; btn.style.background = 'var(--cec-amarillo)'; btn.style.color = 'var(--cec-azul)'; }, 3000);
+}
+document.getElementById('hamburger').addEventListener('click', function(){
+  const l = document.querySelector('.nav-links');
+  if(l) l.style.display = l.style.display === 'flex' ? 'none' : 'flex';
+});
+</script>
+</body>
+</html>

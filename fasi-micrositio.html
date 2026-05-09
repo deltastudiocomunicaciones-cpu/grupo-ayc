@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FASI · Fábrica de Sistemas de Información · Sabaneta, Colombia</title>
+<meta name="description" content="FASI — Fábrica de Sistemas de Información. Sistemas personalizados para procesos empresariales, toma de decisiones e información ejecutiva. Sabaneta, Antioquia.">
+<meta property="og:title" content="FASI · Transformamos datos en éxito empresarial">
+<meta property="og:description" content="Sistemas de información desarrollados, optimizados y adaptados a las especificaciones de su proyecto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Paleta base del grupo */
+  --obsidian:  #0F0E0C;
+  --carbon:    #2A2620;
+  --oro:       #C9A96E;
+  --oro-deep:  #A8803E;
+  --oro-light: #EAD9B4;
+  --marfil:    #F7F4EF;
+  --linen:     #EDE8DF;
+  --parchment: #F9F7F3;
+  --topo:      #8A7968;
+  --topo-dark: #5C5244;
+  --ink:       #1E1B16;
+  --jade:      #1A7A52;
+
+  /* Acento FASI — azul técnico preciso */
+  --fasi:         #1D3557;   /* azul marino de firma tecnológica */
+  --fasi-mid:     #2E5387;   /* azul medio */
+  --fasi-light:   #E8EEF6;   /* azul muy suave para fondos */
+  --fasi-accent:  #3A7BD5;   /* azul eléctrico para detalles */
+
+  --border-oro:     rgba(201,169,110,0.22);
+  --border-oro-mid: rgba(201,169,110,0.42);
+  --border-fasi:    rgba(29,53,87,0.18);
+  --border-fasi-mid:rgba(29,53,87,0.35);
+  --border-ink:     rgba(30,27,22,0.10);
+  --border-ink-mid: rgba(30,27,22,0.18);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--marfil);
+  color:var(--ink);
+  font-family:'Syne',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ── TOPBAR GRUPO ── */
+.grupo-bar{
+  background:var(--obsidian);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:36px;
+}
+.grupo-bar a{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);text-decoration:none;
+  transition:opacity .2s;
+}
+.grupo-bar a:hover{opacity:.75;}
+.grupo-bar-left{
+  display:flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--topo);
+}
+.grupo-bar-sep{color:rgba(138,121,104,.3);}
+.grupo-bar-right{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;color:rgba(138,121,104,.45);
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:68px;
+  background:rgba(247,244,239,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-fasi);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 1px 20px rgba(29,53,87,0.08);}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{
+  width:38px;height:38px;
+  background:var(--fasi);
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-logo-mark span{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:13px;color:var(--oro);letter-spacing:.06em;
+}
+.nav-logo-text{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:15px;color:var(--ink);letter-spacing:.08em;line-height:1.2;
+}
+.nav-logo-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;color:var(--topo);text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--topo-dark);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--fasi);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-wa{
+  display:flex;align-items:center;gap:7px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--jade);text-decoration:none;
+  border:1px solid rgba(26,122,82,.25);
+  padding:8px 16px;transition:background .2s;
+}
+.nav-wa:hover{background:rgba(26,122,82,.06);}
+.nav-wa-dot{width:7px;height:7px;border-radius:50%;background:var(--jade);}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--marfil);background:var(--fasi);
+  padding:10px 20px;text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:var(--fasi-mid);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);}
+
+/* ── HERO ── */
+.hero{
+  min-height:calc(100vh - 104px);
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 70% at 95% 50%, rgba(29,53,87,0.06) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-bg-text{
+  position:absolute;bottom:-20px;right:-10px;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(80px,14vw,220px);line-height:.85;
+  color:rgba(29,53,87,0.04);
+  text-transform:uppercase;letter-spacing:-.03em;
+  pointer-events:none;user-select:none;text-align:right;
+}
+.hero-left{
+  padding:72px 60px 72px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border-fasi);
+  position:relative;z-index:1;
+  background:var(--marfil);
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fasi);margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--fasi);}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(44px,5vw,74px);line-height:1.03;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:8px;
+}
+.hero-title em{font-style:italic;color:var(--fasi);}
+.hero-title strong{font-weight:600;display:block;color:var(--obsidian);}
+.hero-rule{width:44px;height:1px;background:var(--oro);margin:28px 0;opacity:.7;}
+.hero-desc{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:420px;margin-bottom:44px;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-fasi{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--marfil);background:var(--fasi);
+  padding:16px 32px;text-decoration:none;
+  transition:background .2s;display:inline-block;
+}
+.btn-fasi:hover{background:var(--fasi-mid);}
+.btn-ghost{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--fasi);border:1px solid var(--border-fasi-mid);
+  padding:15px 32px;text-decoration:none;
+  transition:all .2s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--fasi);background:var(--fasi-light);}
+.btn-gold{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--obsidian);background:var(--oro);
+  padding:16px 32px;text-decoration:none;
+  transition:opacity .2s;display:inline-block;
+}
+.btn-gold:hover{opacity:.88;}
+
+.hero-right{
+  background:var(--fasi);
+  padding:72px 80px 72px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-right::before{
+  content:'F';
+  position:absolute;right:-20px;top:-30px;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:300px;color:rgba(255,255,255,0.04);
+  line-height:1;pointer-events:none;
+}
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(28px,3vw,46px);font-style:italic;
+  color:var(--oro-light);line-height:1.2;margin-bottom:48px;
+}
+.hero-tagline strong{font-style:normal;font-weight:400;color:var(--oro);}
+.hero-modules{
+  display:grid;grid-template-columns:1fr;
+  gap:1px;background:rgba(201,169,110,0.2);
+  border:1px solid rgba(201,169,110,0.2);
+  margin-bottom:32px;
+}
+.hero-module{
+  background:rgba(255,255,255,0.05);
+  padding:20px 24px;
+  display:flex;align-items:center;gap:16px;
+  transition:background .2s;text-decoration:none;
+}
+.hero-module:hover{background:rgba(255,255,255,0.09);}
+.hm-num{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--oro);letter-spacing:.1em;
+  flex-shrink:0;min-width:28px;
+}
+.hm-text{}
+.hm-name{
+  font-family:'Syne',sans-serif;font-size:12px;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--marfil);margin-bottom:3px;
+}
+.hm-desc{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.06em;color:rgba(247,244,239,.45);
+  text-transform:uppercase;
+}
+.hm-arrow{
+  margin-left:auto;font-family:'DM Mono',monospace;
+  font-size:14px;color:var(--oro);
+  opacity:.5;transition:opacity .2s,transform .2s;
+}
+.hero-module:hover .hm-arrow{opacity:1;transform:translateX(3px);}
+.hero-info{
+  display:flex;gap:24px;
+  border-top:1px solid rgba(201,169,110,0.2);
+  padding-top:24px;
+}
+.hi-item{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(247,244,239,.4);line-height:1.8;
+}
+.hi-item strong{display:block;font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-weight:300;color:var(--marfil);
+  text-transform:none;letter-spacing:0;margin-bottom:2px;}
+
+/* ── SECCIONES ── */
+section{padding:88px 80px;border-bottom:1px solid var(--border-ink);}
+section.alt{background:var(--linen);}
+section.parch{background:var(--parchment);}
+section.fasi-dark{
+  background:var(--fasi);
+  border-color:rgba(201,169,110,0.15);
+}
+
+.sec-header{display:flex;align-items:flex-start;gap:48px;margin-bottom:64px;}
+.sec-num{
+  font-family:'DM Mono',monospace;font-size:10px;
+  color:var(--fasi);letter-spacing:.1em;padding-top:6px;
+  white-space:nowrap;flex-shrink:0;
+}
+.sec-num.on-dark{color:var(--oro);}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.2em;color:var(--topo);text-transform:uppercase;margin-bottom:12px;
+}
+.sec-label.on-dark{color:rgba(247,244,239,.45);}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:var(--ink);
+}
+.sec-title em{font-style:italic;color:var(--fasi);}
+.sec-title.on-dark{color:var(--marfil);}
+.sec-title.on-dark em{color:var(--oro);}
+.sec-intro{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:640px;margin-bottom:52px;
+}
+.sec-intro.on-dark{color:rgba(247,244,239,.62);}
+
+/* ── TRES SISTEMAS ── */
+.sistemas-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-fasi);border:1px solid var(--border-fasi);
+}
+.sistema-card{
+  background:var(--marfil);padding:44px 36px;
+  position:relative;overflow:hidden;
+  transition:background .22s;
+}
+.sistema-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;transition:background .25s;
+}
+.sistema-card:hover{background:var(--fasi-light);}
+.sc-01::before{background:var(--fasi);}
+.sc-02::before{background:var(--fasi-mid);}
+.sc-03::before{background:var(--fasi-accent);}
+.sistema-num{
+  font-family:'DM Mono',monospace;font-size:32px;
+  font-weight:300;color:rgba(29,53,87,.1);
+  line-height:1;margin-bottom:20px;
+}
+.sistema-tag{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fasi);margin-bottom:12px;display:block;
+}
+.sistema-title{
+  font-family:'Cormorant Garamond',serif;font-size:24px;
+  font-weight:400;color:var(--ink);margin-bottom:14px;line-height:1.2;
+}
+.sistema-desc{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--topo-dark);line-height:1.6;margin-bottom:24px;
+}
+.sistema-features{list-style:none;margin-bottom:28px;}
+.sistema-features li{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--topo-dark);padding:8px 0;
+  border-bottom:1px solid var(--border-ink);
+  display:flex;align-items:center;gap:8px;
+}
+.sistema-features li:last-child{border-bottom:none;}
+.sf-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--fasi);flex-shrink:0;
+}
+.sistema-cta{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--fasi);text-decoration:none;
+  display:flex;align-items:center;gap:6px;
+  transition:gap .2s;
+}
+.sistema-cta:hover{gap:10px;}
+
+/* ── SADI ALLIANCE ── */
+.alliance-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);
+}
+.alliance-left{
+  background:var(--marfil);padding:52px 48px;
+}
+.alliance-right{
+  background:var(--obsidian);padding:52px 48px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.alliance-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--fasi);margin-bottom:16px;
+}
+.alliance-title{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,44px);
+  font-weight:300;color:var(--ink);margin-bottom:20px;line-height:1.15;
+}
+.alliance-title em{font-style:italic;color:var(--fasi);}
+.alliance-desc{
+  font-family:'Cormorant Garamond',serif;font-size:18px;
+  font-weight:300;color:var(--topo-dark);line-height:1.65;margin-bottom:32px;
+}
+.alliance-bullets{list-style:none;margin-bottom:36px;}
+.alliance-bullets li{
+  display:flex;gap:12px;padding:12px 0;
+  border-bottom:1px solid var(--border-ink);
+}
+.alliance-bullets li:last-child{border-bottom:none;padding-bottom:0;}
+.ab-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--oro-deep);flex-shrink:0;margin-top:6px;
+}
+.ab-text{
+  font-family:'Cormorant Garamond',serif;font-size:17px;
+  font-weight:300;color:var(--topo-dark);line-height:1.5;
+}
+.alliance-right-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--oro);margin-bottom:20px;
+}
+.alliance-quote{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,34px);
+  font-weight:300;font-style:italic;color:var(--marfil);
+  line-height:1.3;margin-bottom:28px;
+}
+.alliance-quote em{font-style:normal;color:var(--oro);}
+.alliance-modules{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(201,169,110,.2);
+  border:1px solid rgba(201,169,110,.2);
+}
+.am-cell{
+  background:rgba(255,255,255,.04);padding:16px 18px;
+}
+.am-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--oro);margin-bottom:4px;
+}
+.am-value{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:rgba(247,244,239,.7);
+}
+
+/* ── ATRIBUTOS ── */
+.atributos-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-fasi);border:1px solid var(--border-fasi);
+}
+.atributo-cell{
+  background:var(--parchment);padding:36px 32px;
+  transition:background .2s;
+}
+.atributo-cell:hover{background:var(--fasi-light);}
+.attr-icon{
+  width:40px;height:40px;
+  border:1px solid var(--border-fasi-mid);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;
+}
+.attr-icon svg{width:18px;height:18px;stroke:var(--fasi);stroke-width:1.5;fill:none;stroke-linecap:round;}
+.attr-title{
+  font-family:'Syne',sans-serif;font-size:12px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink);margin-bottom:10px;
+}
+.attr-desc{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--topo-dark);line-height:1.6;
+}
+
+/* ── EQUIPO ── */
+.equipo-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);
+}
+.equipo-card{
+  background:var(--marfil);padding:40px 32px;
+  transition:background .2s;
+}
+.equipo-card:hover{background:var(--linen);}
+.eq-initial{
+  width:56px;height:56px;background:var(--fasi);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+}
+.eq-initial span{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:22px;color:var(--oro);letter-spacing:.04em;
+}
+.eq-name{
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  font-weight:400;color:var(--ink);margin-bottom:4px;
+}
+.eq-role{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--fasi);margin-bottom:4px;
+}
+.eq-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.08em;color:var(--topo);margin-bottom:16px;
+}
+.eq-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.55;
+}
+
+/* ── TESTIMONIOS ── */
+.testimonios-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(201,169,110,.2);
+  border:1px solid rgba(201,169,110,.2);
+}
+.testimonio-card{
+  background:rgba(255,255,255,.06);padding:36px 32px;
+}
+.t-quote-mark{
+  font-family:'Cormorant Garamond',serif;font-size:56px;
+  color:var(--oro);line-height:.8;margin-bottom:12px;opacity:.5;
+}
+.t-text{
+  font-family:'Cormorant Garamond',serif;font-size:17px;
+  font-weight:300;font-style:italic;
+  color:var(--marfil);line-height:1.6;margin-bottom:20px;
+}
+.t-name{
+  font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:600;color:var(--oro-light);margin-bottom:3px;
+}
+.t-role{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(201,169,110,.5);
+}
+
+/* ── PROCESO ── */
+.proceso-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border-fasi);border:1px solid var(--border-fasi);
+  margin-bottom:48px;
+}
+.proceso-step{
+  background:var(--marfil);padding:36px 28px;position:relative;
+}
+.proceso-step::after{
+  content:'→';position:absolute;top:36px;right:-1px;
+  font-family:'DM Mono',monospace;font-size:14px;
+  color:var(--fasi);transform:translateX(50%);
+  background:var(--marfil);padding:0 4px;z-index:1;
+}
+.proceso-step:last-child::after{display:none;}
+.paso-num{
+  font-family:'DM Mono',monospace;font-size:28px;
+  font-weight:300;color:rgba(29,53,87,.12);
+  line-height:1;margin-bottom:12px;
+}
+.paso-title{
+  font-family:'Syne',sans-serif;font-size:12px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--ink);margin-bottom:8px;
+}
+.paso-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.55;
+}
+
+/* ── PRECIOS TEASER ── */
+.precios-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-fasi);border:1px solid var(--border-fasi);
+  margin-bottom:48px;
+}
+.precio-card{background:var(--marfil);padding:40px 32px;position:relative;}
+.precio-card.featured{
+  background:var(--fasi);
+  border:1px solid rgba(201,169,110,.3);
+}
+.precio-badge{
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;
+  background:var(--oro);color:var(--obsidian);
+  padding:4px 14px;
+}
+.precio-plan{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fasi);margin-bottom:16px;
+}
+.precio-plan.on-dark{color:var(--oro);}
+.precio-name{
+  font-family:'Cormorant Garamond',serif;font-size:26px;
+  font-weight:400;color:var(--ink);margin-bottom:8px;
+}
+.precio-name.on-dark{color:var(--marfil);}
+.precio-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.55;margin-bottom:24px;
+}
+.precio-desc.on-dark{color:rgba(247,244,239,.6);}
+.precio-list{list-style:none;margin-bottom:28px;}
+.precio-list li{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--topo-dark);padding:8px 0;
+  border-bottom:1px solid var(--border-ink);
+  display:flex;gap:8px;align-items:center;
+}
+.precio-list li.on-dark{
+  color:rgba(247,244,239,.55);
+  border-bottom-color:rgba(201,169,110,.15);
+}
+.precio-list li:last-child{border-bottom:none;}
+.pl-check{
+  font-size:11px;color:var(--fasi);flex-shrink:0;
+}
+.pl-check.on-dark{color:var(--oro);}
+.precio-cta{
+  display:block;text-align:center;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:13px;transition:all .2s;
+}
+.precio-cta-light{
+  color:var(--marfil);background:var(--fasi);
+}
+.precio-cta-light:hover{background:var(--fasi-mid);}
+.precio-cta-dark{
+  color:var(--obsidian);background:var(--oro);
+}
+.precio-cta-dark:hover{opacity:.88;}
+
+/* ── CONTACTO ── */
+.contact-grid{
+  display:grid;grid-template-columns:3fr 2fr;
+  gap:1px;background:var(--border-fasi);border:1px solid var(--border-fasi);
+}
+.contact-form-cell{background:var(--parchment);padding:52px 48px;}
+.contact-info-cell{background:var(--fasi);padding:52px 40px;}
+.form-group{margin-bottom:22px;}
+.form-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--topo);display:block;margin-bottom:8px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input,.form-select,.form-textarea{
+  width:100%;background:var(--marfil);
+  border:1px solid var(--border-ink-mid);
+  color:var(--ink);font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;padding:13px 15px;
+  outline:none;transition:border-color .2s;appearance:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--fasi);}
+.form-textarea{resize:vertical;min-height:110px;}
+.form-submit{
+  width:100%;font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--marfil);background:var(--fasi);
+  border:none;padding:17px;cursor:pointer;transition:background .2s;
+}
+.form-submit:hover{background:var(--fasi-mid);}
+.ci-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--oro);margin-bottom:20px;
+}
+.ci-title{
+  font-family:'Cormorant Garamond',serif;font-size:28px;
+  font-weight:300;color:var(--marfil);line-height:1.2;margin-bottom:28px;
+}
+.ci-item{
+  padding:16px 0;border-bottom:1px solid rgba(201,169,110,.15);
+}
+.ci-item:last-child{border-bottom:none;}
+.ci-item-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(247,244,239,.4);margin-bottom:5px;
+}
+.ci-item-value{
+  font-family:'Cormorant Garamond',serif;font-size:17px;
+  font-weight:300;color:var(--marfil);
+}
+.wa-btn-fasi{
+  display:flex;align-items:center;gap:10px;margin-top:24px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--jade);border:1px solid rgba(26,122,82,.3);
+  padding:13px 20px;text-decoration:none;
+  transition:background .2s;
+}
+.wa-btn-fasi:hover{background:rgba(26,122,82,.08);}
+.wa-dot{width:8px;height:8px;border-radius:50%;background:var(--jade);}
+.grupo-badge-fasi{
+  margin-top:28px;padding:16px 18px;
+  background:rgba(0,0,0,.2);
+  display:flex;align-items:center;gap:12px;
+}
+.gb-dot{width:8px;height:8px;border-radius:50%;background:var(--oro);flex-shrink:0;}
+.gb-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(247,244,239,.4);margin-bottom:4px;
+}
+.gb-name{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--oro-light);
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--obsidian);
+  border-top:1px solid rgba(201,169,110,.12);
+  padding:48px 80px 32px;
+}
+.footer-inner{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:40px;
+  padding-bottom:36px;border-bottom:1px solid rgba(201,169,110,.1);margin-bottom:28px;
+}
+.footer-brand-name{
+  font-family:'Syne',sans-serif;font-size:18px;
+  font-weight:700;color:var(--marfil);letter-spacing:.08em;margin-bottom:4px;
+}
+.footer-brand-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.18em;color:var(--topo);text-transform:uppercase;margin-bottom:4px;
+}
+.footer-brand-tagline{
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-style:italic;color:var(--oro);margin-bottom:14px;
+}
+.footer-brand-desc{
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-weight:300;color:var(--topo);line-height:1.6;max-width:260px;
+}
+.footer-col-title{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;
+}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:9px;}
+.footer-links a{
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-weight:300;color:var(--topo);text-decoration:none;transition:color .2s;
+}
+.footer-links a:hover{color:var(--marfil);}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--topo);}
+.footer-grupo{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.45);}
+.footer-grupo a{color:rgba(201,169,110,.45);text-decoration:none;}
+.footer-grupo a:hover{color:var(--oro);}
+
+/* ── ANIMS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.fade-up{animation:fadeUp .6s ease both;}
+.d1{animation-delay:.08s;}.d2{animation-delay:.2s;}
+.d3{animation-delay:.33s;}.d4{animation-delay:.46s;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .grupo-bar,.nav-links{display:none;}
+  nav{padding:0 32px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{padding:48px 32px;min-height:auto;}
+  section{padding:64px 32px;}
+  .sistemas-grid,.atributos-grid,.equipo-grid,.testimonios-grid{grid-template-columns:1fr 1fr;}
+  .precios-grid,.proceso-steps{grid-template-columns:1fr;}
+  .proceso-step::after{display:none;}
+  .alliance-grid,.contact-grid{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:28px;}
+  .sec-header{flex-direction:column;gap:12px;}
+}
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-right{gap:6px;}
+  .nav-wa{display:none;}
+  .nav-hamburger{display:flex;}
+  section{padding:52px 20px;}
+  .hero-left{padding:52px 20px;}
+  .hero-right{padding:40px 20px;}
+  .sistemas-grid,.atributos-grid,.equipo-grid,.testimonios-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{padding:40px 20px 24px;}
+  .hero-info{flex-direction:column;gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOPBAR GRUPO ══ -->
+<div class="grupo-bar">
+  <div class="grupo-bar-left">
+    <span>Una marca de</span>
+    <span class="grupo-bar-sep">/</span>
+    <a href="index-claro.html">Grupo Análisis &amp; Consultorías</a>
+  </div>
+  <div class="grupo-bar-right">A&amp;C · SADI · TRACO · SOFTPROCESS · Contadores en Colombia</div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark"><span>FSI</span></div>
+    <div>
+      <div class="nav-logo-text">FASI</div>
+      <div class="nav-logo-sub">Fábrica de Sistemas de Información</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sistemas">Sistemas</a></li>
+    <li><a href="#sadi">SADI</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/573128619438" target="_blank" class="nav-wa">
+      <div class="nav-wa-dot"></div>
+      WhatsApp
+    </a>
+    <a href="#contacto" class="nav-cta">Cotización gratuita</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-bg-text">FASI</div>
+
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up d1">Sabaneta · Antioquia · Grupo A&amp;C</div>
+    <h1 class="hero-title fade-up d2">
+      Sistemas que
+      <em>transforman</em>
+      <strong>datos en decisiones.</strong>
+    </h1>
+    <div class="hero-rule fade-up d3"></div>
+    <p class="hero-desc fade-up d3">
+      FASI desarrolla, optimiza y adapta sistemas de información a las especificaciones reales de cada proyecto. Tecnología de firma con el respaldo del Grupo A&C.
+    </p>
+    <div class="hero-actions fade-up d4">
+      <a href="#sistemas" class="btn-fasi">Ver sistemas</a>
+      <a href="#contacto" class="btn-ghost">Cotización gratuita</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-tagline">
+      "Transformamos datos<br>en <strong>éxito empresarial.</strong>"
+    </div>
+    <div class="hero-modules">
+      <a href="#sistemas" class="hero-module">
+        <div class="hm-num">01</div>
+        <div class="hm-text">
+          <div class="hm-name">Procesos empresariales</div>
+          <div class="hm-desc">Inventario · facturación · pedidos</div>
+        </div>
+        <div class="hm-arrow">→</div>
+      </a>
+      <a href="#sistemas" class="hero-module">
+        <div class="hm-num">02</div>
+        <div class="hm-text">
+          <div class="hm-name">Toma de decisiones</div>
+          <div class="hm-desc">Datos · análisis · estrategia</div>
+        </div>
+        <div class="hm-arrow">→</div>
+      </a>
+      <a href="#sistemas" class="hero-module">
+        <div class="hm-num">03</div>
+        <div class="hm-text">
+          <div class="hm-name">Información ejecutiva</div>
+          <div class="hm-desc">Métricas · dashboards · alta dirección</div>
+        </div>
+        <div class="hm-arrow">→</div>
+      </a>
+      <a href="#sadi" class="hero-module">
+        <div class="hm-num">04</div>
+        <div class="hm-text">
+          <div class="hm-name">SADI</div>
+          <div class="hm-desc">Software contable · nómina · facturación</div>
+        </div>
+        <div class="hm-arrow">→</div>
+      </a>
+    </div>
+    <div class="hero-info">
+      <div class="hi-item">
+        <strong>Sabaneta</strong>
+        Sede principal
+      </div>
+      <div class="hi-item">
+        <strong>+57 312 861 9438</strong>
+        Contacto directo
+      </div>
+      <div class="hi-item">
+        <strong>Lun–Vie</strong>
+        9:00 am – 5:00 pm
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ LOS TRES SISTEMAS ══ -->
+<section id="sistemas" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">01 —</div>
+    <div>
+      <div class="sec-label">Soluciones tecnológicas</div>
+      <h2 class="sec-title">Tres sistemas.<br><em>Una sola decisión.</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro">Cada sistema FASI es personalizado a las especificaciones del proyecto. No vendemos plantillas — construimos soluciones que se alinean con la realidad operativa de cada negocio.</p>
+
+  <div class="sistemas-grid">
+    <div class="sistema-card sc-01">
+      <div class="sistema-num">01</div>
+      <span class="sistema-tag">Procesos empresariales</span>
+      <div class="sistema-title">Automatización operativa completa</div>
+      <div class="sistema-desc">Automatiza y optimiza las tareas que consumen tiempo y generan errores: inventario, facturación electrónica, seguimiento de pedidos y flujos operativos críticos. Libera recursos para que su equipo se enfoque en crecer.</div>
+      <ul class="sistema-features">
+        <li><span class="sf-dot"></span>Control de inventario en tiempo real</li>
+        <li><span class="sf-dot"></span>Facturación electrónica DIAN</li>
+        <li><span class="sf-dot"></span>Seguimiento de pedidos y despachos</li>
+        <li><span class="sf-dot"></span>Automatización de flujos operativos</li>
+        <li><span class="sf-dot"></span>Integración con sistemas existentes</li>
+      </ul>
+      <a href="#contacto" class="sistema-cta">Solicitar cotización <span>→</span></a>
+    </div>
+
+    <div class="sistema-card sc-02">
+      <div class="sistema-num">02</div>
+      <span class="sistema-tag">Toma de decisiones</span>
+      <div class="sistema-title">Inteligencia de negocio aplicada</div>
+      <div class="sistema-desc">Datos y análisis clave para que las decisiones estratégicas se tomen sobre información precisa — no sobre intuición. La diferencia entre reaccionar y anticipar está en la calidad de la información disponible.</div>
+      <ul class="sistema-features">
+        <li><span class="sf-dot"></span>Dashboards de indicadores clave (KPIs)</li>
+        <li><span class="sf-dot"></span>Análisis de tendencias y proyecciones</li>
+        <li><span class="sf-dot"></span>Reportes comparativos y de gestión</li>
+        <li><span class="sf-dot"></span>Alertas automáticas por umbrales</li>
+        <li><span class="sf-dot"></span>Integración con Power BI</li>
+      </ul>
+      <a href="#contacto" class="sistema-cta">Solicitar cotización <span>→</span></a>
+    </div>
+
+    <div class="sistema-card sc-03">
+      <div class="sistema-num">03</div>
+      <span class="sistema-tag">Información ejecutiva</span>
+      <div class="sistema-title">Visión estratégica para la alta dirección</div>
+      <div class="sistema-desc">Datos estratégicos resumidos para que los líderes tomen decisiones ágiles y efectivas. El tablero de control que la dirección necesita: conciso, confiable y en tiempo real para el gobierno real del negocio.</div>
+      <ul class="sistema-features">
+        <li><span class="sf-dot"></span>Executive dashboard personalizado</li>
+        <li><span class="sf-dot"></span>Métricas financieras y operativas</li>
+        <li><span class="sf-dot"></span>Consolidación multi-unidad de negocio</li>
+        <li><span class="sf-dot"></span>Acceso móvil en tiempo real</li>
+        <li><span class="sf-dot"></span>Informes de junta directiva</li>
+      </ul>
+      <a href="#contacto" class="sistema-cta">Solicitar cotización <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FASI + SADI ══ -->
+<section id="sadi" class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">02 —</div>
+    <div>
+      <div class="sec-label">Alianza estratégica</div>
+      <h2 class="sec-title">FASI &amp; <em>SADI</em><br>juntos en la transformación digital</h2>
+    </div>
+  </div>
+
+  <div class="alliance-grid">
+    <div class="alliance-left">
+      <div class="alliance-label">Cobranding · Ecosistema Grupo A&amp;C</div>
+      <h3 class="alliance-title">Software contable propio,<br><em>integrado con sus sistemas</em></h3>
+      <p class="alliance-desc">FASI y SADI operan como socios estratégicos dentro del Grupo A&C. Mientras FASI construye los sistemas de información a medida, SADI provee el núcleo contable, de facturación y nómina que los alimenta. Dos marcas, una solución integral.</p>
+      <ul class="alliance-bullets">
+        <li>
+          <span class="ab-dot"></span>
+          <span class="ab-text">Software contable SADI integrado con los sistemas FASI de procesos y decisiones</span>
+        </li>
+        <li>
+          <span class="ab-dot"></span>
+          <span class="ab-text">Facturación electrónica DIAN habilitada y nómina electrónica para cualquier empresa</span>
+        </li>
+        <li>
+          <span class="ab-dot"></span>
+          <span class="ab-text">Módulos de inventarios conectados al flujo operativo y al reporte ejecutivo</span>
+        </li>
+        <li>
+          <span class="ab-dot"></span>
+          <span class="ab-text">Soporte técnico unificado desde el ecosistema del Grupo A&C</span>
+        </li>
+      </ul>
+      <a href="#contacto" class="btn-fasi">Conocer la solución integrada</a>
+    </div>
+
+    <div class="alliance-right">
+      <div class="alliance-right-label">SADI · Sistema Administrativo de Información</div>
+      <div class="alliance-quote">
+        "Cuando los datos contables y los datos operativos hablan el mismo <em>idioma</em>, la empresa decide mejor."
+      </div>
+      <div class="alliance-modules">
+        <div class="am-cell">
+          <div class="am-label">Módulo</div>
+          <div class="am-value">Facturación electrónica</div>
+        </div>
+        <div class="am-cell">
+          <div class="am-label">Módulo</div>
+          <div class="am-value">Nómina electrónica</div>
+        </div>
+        <div class="am-cell">
+          <div class="am-label">Módulo</div>
+          <div class="am-value">Contabilidad</div>
+        </div>
+        <div class="am-cell">
+          <div class="am-label">Módulo</div>
+          <div class="am-value">Inventarios</div>
+        </div>
+        <div class="am-cell">
+          <div class="am-label">Módulo</div>
+          <div class="am-value">Informes Power BI</div>
+        </div>
+        <div class="am-cell">
+          <div class="am-label">Módulo</div>
+          <div class="am-value">Multi-empresa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ATRIBUTOS ══ -->
+<section class="parch reveal">
+  <div class="sec-header">
+    <div class="sec-num">03 —</div>
+    <div>
+      <div class="sec-label">Por qué FASI</div>
+      <h2 class="sec-title">Lo que hace diferente<br>a un sistema <em>bien construido</em></h2>
+    </div>
+  </div>
+
+  <div class="atributos-grid">
+    <div class="atributo-cell">
+      <div class="attr-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="attr-title">Eficiencia operativa</div>
+      <div class="attr-desc">Mejora la productividad y reduce costos operativos al eliminar procesos manuales, errores de digitación y reprocesos que hoy consumen recursos valiosos.</div>
+    </div>
+    <div class="atributo-cell">
+      <div class="attr-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="attr-title">Adaptabilidad total</div>
+      <div class="attr-desc">Los sistemas FASI se ajustan ágilmente a los cambios del negocio. No compra una solución rígida — compra una plataforma que evoluciona con su empresa.</div>
+    </div>
+    <div class="atributo-cell">
+      <div class="attr-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="attr-title">Reducción de errores</div>
+      <div class="attr-desc">Los sistemas de información bien construidos eliminan la ambigüedad. Cada dato tiene una fuente, cada proceso tiene un flujo, cada decisión tiene respaldo.</div>
+    </div>
+    <div class="atributo-cell">
+      <div class="attr-icon">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="attr-title">Decisiones informadas</div>
+      <div class="attr-desc">Del dato al criterio. Los sistemas FASI transforman volúmenes de información operativa en indicadores accionables para la dirección y el equipo.</div>
+    </div>
+    <div class="atributo-cell">
+      <div class="attr-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="attr-title">Personalización total</div>
+      <div class="attr-desc">Cada negocio tiene su lógica. FASI diseña sistemas que se ajustan a sus procesos reales — no al revés. La tecnología se adapta al negocio, no el negocio a la tecnología.</div>
+    </div>
+    <div class="atributo-cell">
+      <div class="attr-icon">
+        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <div class="attr-title">Crecimiento sostenible</div>
+      <div class="attr-desc">Una arquitectura que escala. Los sistemas FASI se construyen para crecer con su empresa — nuevas unidades, nuevos usuarios, nuevas integraciones sin rehacer desde cero.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PROCESO ══ -->
+<section class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">04 —</div>
+    <div>
+      <div class="sec-label">Cómo trabajamos</div>
+      <h2 class="sec-title">Del diagnóstico al sistema<br><em>funcionando</em></h2>
+    </div>
+  </div>
+
+  <div class="proceso-steps">
+    <div class="proceso-step">
+      <div class="paso-num">01</div>
+      <div class="paso-title">Diagnóstico</div>
+      <div class="paso-desc">Entendemos sus procesos actuales, los puntos de fricción y los objetivos de información que la empresa necesita alcanzar. Sin costo, sin compromisos.</div>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">02</div>
+      <div class="paso-title">Diseño</div>
+      <div class="paso-desc">Diseñamos la arquitectura del sistema ajustada a sus especificaciones. Flujos, módulos, integraciones y reportes antes de escribir la primera línea de código.</div>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">03</div>
+      <div class="paso-title">Desarrollo</div>
+      <div class="paso-desc">Desarrollamos e implementamos el sistema con validaciones periódicas del equipo cliente. Cada fase se entrega, se prueba y se aprueba antes de continuar.</div>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">04</div>
+      <div class="paso-title">Soporte</div>
+      <div class="paso-desc">Acompañamiento post-lanzamiento, capacitación al equipo, ajustes y evolución del sistema a medida que el negocio crece y cambia.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ EQUIPO ══ -->
+<section id="equipo" class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">05 —</div>
+    <div>
+      <div class="sec-label">Las personas detrás de los sistemas</div>
+      <h2 class="sec-title">Coordinadores y<br><em>directores FASI</em></h2>
+    </div>
+  </div>
+
+  <div class="equipo-grid">
+    <div class="equipo-card">
+      <div class="eq-initial"><span>GV</span></div>
+      <div class="eq-name">Gerardo Valencia O.</div>
+      <div class="eq-role">Desarrollador de Software</div>
+      <div class="eq-sub">SADI · Arquitectura de sistemas</div>
+      <div class="eq-desc">Ingeniero de software que forja soluciones digitales con pasión y precisión. Responsable del desarrollo y evolución de la plataforma SADI dentro del ecosistema FASI.</div>
+    </div>
+    <div class="equipo-card">
+      <div class="eq-initial"><span>CA</span></div>
+      <div class="eq-name">Camila Álvarez P.</div>
+      <div class="eq-role">Analista de Datos</div>
+      <div class="eq-sub">FASI · Inteligencia de negocio</div>
+      <div class="eq-desc">Especialista en crear conocimiento empresarial valioso a partir de datos e información. Traduce la complejidad operativa en indicadores que la dirección puede usar para decidir.</div>
+    </div>
+    <div class="equipo-card">
+      <div class="eq-initial"><span>GM</span></div>
+      <div class="eq-name">Gabriel Marín L.</div>
+      <div class="eq-role">Consultor de Estrategia</div>
+      <div class="eq-sub">FASI · Transformación digital</div>
+      <div class="eq-desc">Convierte los desafíos tecnológicos en oportunidades con una mente analítica y visionaria. Acompaña a las empresas en la adopción de sistemas de información como palanca de crecimiento.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ TESTIMONIOS ══ -->
+<section class="fasi-dark reveal">
+  <div class="sec-header">
+    <div class="sec-num on-dark">06 —</div>
+    <div>
+      <div class="sec-label on-dark">Clientes FASI</div>
+      <h2 class="sec-title on-dark">Lo que dicen quienes<br><em>ya transformaron su negocio</em></h2>
+    </div>
+  </div>
+
+  <div class="testimonios-grid">
+    <div class="testimonio-card">
+      <div class="t-quote-mark">"</div>
+      <div class="t-text">Con SADI transformamos las operaciones contables y de facturación. Fue un cambio muy significativo para la empresa — lo que antes tomaba días, ahora toma horas.</div>
+      <div class="t-name">Gildardo Hoyos</div>
+      <div class="t-role">Empresario maderero · Cliente FASI</div>
+    </div>
+    <div class="testimonio-card">
+      <div class="t-quote-mark">"</div>
+      <div class="t-text">Muy agradecido por el acompañamiento profesional del grupo FASI. La forma en que nos guiaron en la implementación hizo toda la diferencia. Un equipo que realmente entiende el negocio.</div>
+      <div class="t-name">Horacio Salazar T.</div>
+      <div class="t-role">Consultor · Sector asegurador · Cliente FASI</div>
+    </div>
+    <div class="testimonio-card">
+      <div class="t-quote-mark">"</div>
+      <div class="t-text">FASI resultó ser un aliado esencial con su sistema para la toma de decisiones. Pasamos de tener datos dispersos a tener un tablero de control que realmente usamos cada semana.</div>
+      <div class="t-name">Edison Villada L.</div>
+      <div class="t-role">Especialista en bases de datos · Cliente FASI</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PRECIOS TEASER ══ -->
+<section id="precios" class="parch reveal">
+  <div class="sec-header">
+    <div class="sec-num">07 —</div>
+    <div>
+      <div class="sec-label">Planes y precios</div>
+      <h2 class="sec-title">Inversión clara.<br><em>Sin sorpresas.</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro">Cada proyecto FASI tiene su propia cotización porque cada negocio tiene su propia complejidad. Sin embargo, estos son los puntos de partida para los tres sistemas principales.</p>
+
+  <div class="precios-grid">
+    <div class="precio-card">
+      <div class="precio-plan">Sistema base</div>
+      <div class="precio-name">Procesos empresariales</div>
+      <div class="precio-desc">Para empresas que necesitan automatizar operaciones core: inventario, facturación y seguimiento de pedidos.</div>
+      <ul class="precio-list">
+        <li><span class="pl-check">✓</span>Módulo de inventario</li>
+        <li><span class="pl-check">✓</span>Facturación electrónica DIAN</li>
+        <li><span class="pl-check">✓</span>Seguimiento de pedidos</li>
+        <li><span class="pl-check">✓</span>Reportes operativos básicos</li>
+        <li><span class="pl-check">✓</span>Capacitación incluida</li>
+      </ul>
+      <a href="#contacto" class="precio-cta precio-cta-light">Solicitar cotización →</a>
+    </div>
+
+    <div class="precio-card featured">
+      <div class="precio-badge">Más solicitado</div>
+      <div class="precio-plan on-dark">Sistema completo</div>
+      <div class="precio-name on-dark">Procesos + Decisiones</div>
+      <div class="precio-desc on-dark">La combinación más solicitada: automatización operativa + inteligencia de negocio para empresas en crecimiento.</div>
+      <ul class="precio-list">
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Todo de Procesos empresariales</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Dashboards KPIs en tiempo real</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Análisis de tendencias</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Integración Power BI</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Soporte prioritario</li>
+      </ul>
+      <a href="#contacto" class="precio-cta precio-cta-dark">Solicitar cotización →</a>
+    </div>
+
+    <div class="precio-card">
+      <div class="precio-plan">Sistema ejecutivo</div>
+      <div class="precio-name">Suite completa FASI</div>
+      <div class="precio-desc">Los tres sistemas integrados más SADI para empresas que quieren gobernar toda su información desde un ecosistema unificado.</div>
+      <ul class="precio-list">
+        <li><span class="pl-check">✓</span>Todo de sistemas anteriores</li>
+        <li><span class="pl-check">✓</span>Executive dashboard</li>
+        <li><span class="pl-check">✓</span>SADI integrado (contabilidad)</li>
+        <li><span class="pl-check">✓</span>Multi-unidad de negocio</li>
+        <li><span class="pl-check">✓</span>Consultor dedicado</li>
+      </ul>
+      <a href="#contacto" class="precio-cta precio-cta-light">Solicitar cotización →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CONTACTO ══ -->
+<section id="contacto" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">08 —</div>
+    <div>
+      <div class="sec-label">Empiece aquí</div>
+      <h2 class="sec-title">La consultoría inicial<br><em>es gratuita</em></h2>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-form-cell">
+      <p class="sec-intro" style="font-size:17px;margin-bottom:28px;">Cuéntenos qué necesita. Nuestro equipo analiza su situación y le presenta una propuesta personalizada sin costo ni compromiso.</p>
+
+      <form onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" class="form-input" placeholder="Su nombre">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Empresa</label>
+            <input type="text" class="form-input" placeholder="Nombre de la empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" class="form-input" placeholder="correo@empresa.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Teléfono / WhatsApp</label>
+            <input type="tel" class="form-input" placeholder="+57 300 000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Qué sistema necesita?</label>
+          <select class="form-select">
+            <option value="">Seleccione una opción</option>
+            <option>Procesos empresariales</option>
+            <option>Toma de decisiones</option>
+            <option>Información ejecutiva</option>
+            <option>Suite completa FASI</option>
+            <option>SADI — Software contable</option>
+            <option>No sé cuál necesito — quiero asesoría</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cuéntenos su situación actual</label>
+          <textarea class="form-textarea" placeholder="¿Qué procesos necesita automatizar? ¿Qué información le hace falta para decidir mejor? ¿Cuál es su principal dolor operativo hoy?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Solicitar consultoría gratuita →</button>
+      </form>
+    </div>
+
+    <div class="contact-info-cell">
+      <div class="ci-label">FASI · Sabaneta, Antioquia</div>
+      <div class="ci-title">Estamos en<br>Sabaneta.<br>Servimos a todo Colombia.</div>
+
+      <div class="ci-item">
+        <div class="ci-item-label">Dirección</div>
+        <div class="ci-item-value">Calle 52 Sur No. 43A 20<br>Sabaneta, Antioquia</div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-item-label">Teléfono directo</div>
+        <div class="ci-item-value">+57 312 861 9438</div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-item-label">Correo corporativo</div>
+        <div class="ci-item-value">Por confirmar</div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-item-label">Horario de atención</div>
+        <div class="ci-item-value">Lunes a viernes<br>9:00 am – 5:00 pm</div>
+      </div>
+      <div class="ci-item" style="border-bottom:none;">
+        <div class="ci-item-label">Ecosistema</div>
+        <div class="ci-item-value" style="font-size:14px;line-height:2;">
+          Grupo Análisis &amp; Consultorías<br>
+          SADI · A&amp;C · TRACO · SOFTPROCESS
+        </div>
+      </div>
+
+      <a href="https://wa.me/573128619438" target="_blank" class="wa-btn-fasi">
+        <div class="wa-dot"></div>
+        Escribir por WhatsApp
+      </a>
+
+      <div class="grupo-badge-fasi">
+        <div class="gb-dot"></div>
+        <div>
+          <div class="gb-label">Parte de</div>
+          <div class="gb-name">Grupo Análisis &amp; Consultorías</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">FASI</div>
+      <div class="footer-brand-sub">Fábrica de Sistemas de Información</div>
+      <div class="footer-brand-tagline">"Transformamos datos en éxito empresarial."</div>
+      <p class="footer-brand-desc">Sistemas de información desarrollados, optimizados y adaptados a las especificaciones reales de su proyecto. Sabaneta, Antioquia, Colombia.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Sistemas</div>
+      <ul class="footer-links">
+        <li><a href="#sistemas">Procesos empresariales</a></li>
+        <li><a href="#sistemas">Toma de decisiones</a></li>
+        <li><a href="#sistemas">Información ejecutiva</a></li>
+        <li><a href="#sadi">SADI integrado</a></li>
+        <li><a href="#precios">Precios</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">El grupo</div>
+      <ul class="footer-links">
+        <li><a href="index-claro.html">Portal del Grupo</a></li>
+        <li><a href="analisis-consultorias.html">Análisis &amp; Consultorías</a></li>
+        <li><a href="#">TRACO</a></li>
+        <li><a href="#">SOFTPROCESS</a></li>
+        <li><a href="#">Contadores en Colombia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 FASI · Fábrica de Sistemas de Información · Sabaneta, Colombia</div>
+    <div class="footer-grupo">
+      Identidad y portal · <a href="#">SEMA · Brand Intelligence</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+},{ threshold:0.07 });
+reveals.forEach(el => obs.observe(el));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Solicitud recibida — le contactamos pronto ✓';
+  btn.style.background = 'var(--jade)';
+  setTimeout(() => {
+    btn.textContent = 'Solicitar consultoría gratuita →';
+    btn.style.background = 'var(--fasi)';
+  }, 4000);
+}
+
+document.getElementById('hamburger').addEventListener('click', function(){
+  const links = document.querySelector('.nav-links');
+  if(links) links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+});
+</script>
+</body>
+</html>

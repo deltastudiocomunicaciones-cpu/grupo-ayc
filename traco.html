@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRACO · Trámites Colombia · Personas y Empresas</title>
+<meta name="description" content="TRACO — Trámites Colombia. Gestión ágil de trámites ante entidades del Estado colombiano para personas naturales y empresas. Medellín, Colombia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian:  #0F0E0C;
+  --carbon:    #2A2620;
+  --oro:       #C9A96E;
+  --oro-deep:  #A8803E;
+  --marfil:    #F7F4EF;
+  --linen:     #EDE8DF;
+  --parchment: #F9F7F3;
+  --topo:      #8A7968;
+  --topo-dark: #5C5244;
+  --ink:       #1E1B16;
+  --jade:      #1A7A52;
+
+  /* Paleta TRACO — naranja vibrante del logo */
+  --traco:        #E8650A;
+  --traco-deep:   #C0520A;
+  --traco-light:  #FDF0E8;
+  --traco-mid:    #F47C2C;
+
+  --border-traco:     rgba(232,101,10,0.18);
+  --border-traco-mid: rgba(232,101,10,0.38);
+  --border-ink:       rgba(30,27,22,0.10);
+  --border-ink-mid:   rgba(30,27,22,0.18);
+  --border-oro:       rgba(201,169,110,0.22);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--marfil);color:var(--ink);
+  font-family:'Syne',sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+
+/* ── TOPBAR ── */
+.grupo-bar{
+  background:var(--obsidian);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:36px;
+}
+.grupo-bar-left{
+  display:flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--topo);
+}
+.grupo-bar-left a{color:var(--oro);text-decoration:none;transition:opacity .2s;}
+.grupo-bar-left a:hover{opacity:.75;}
+.grupo-bar-sep{color:rgba(138,121,104,.3);}
+.grupo-bar-right{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.4);}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:68px;
+  background:rgba(247,244,239,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-traco);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 1px 20px rgba(232,101,10,0.08);}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{
+  width:38px;height:38px;
+  background:var(--traco);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:12px;color:#fff;letter-spacing:.06em;
+}
+.nav-logo-text{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:15px;color:var(--ink);letter-spacing:.1em;line-height:1.2;
+}
+.nav-logo-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;color:var(--topo);text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--topo-dark);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--traco);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-wa{
+  display:flex;align-items:center;gap:7px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--jade);text-decoration:none;
+  border:1px solid rgba(26,122,82,.25);padding:8px 16px;transition:background .2s;
+}
+.nav-wa:hover{background:rgba(26,122,82,.06);}
+.nav-wa-dot{width:7px;height:7px;border-radius:50%;background:var(--jade);}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--traco);
+  padding:10px 20px;text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:var(--traco-deep);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);}
+
+/* ── HERO ── */
+.hero{
+  min-height:calc(100vh - 104px);
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 70% at 90% 50%, rgba(232,101,10,0.06) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-bg-text{
+  position:absolute;bottom:-20px;right:-10px;
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(100px,16vw,260px);line-height:.85;
+  color:rgba(232,101,10,0.04);text-transform:uppercase;
+  letter-spacing:-.03em;pointer-events:none;user-select:none;
+}
+.hero-left{
+  padding:72px 60px 72px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border-traco);
+  position:relative;z-index:1;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--traco);margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--traco);}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(44px,5vw,72px);line-height:1.03;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:8px;
+}
+.hero-title em{font-style:italic;color:var(--traco);}
+.hero-title strong{font-weight:600;display:block;}
+.hero-rule{width:44px;height:1px;background:var(--traco);margin:28px 0;}
+.hero-desc{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:420px;margin-bottom:44px;
+}
+
+/* Selector de ruta (personas / empresas) */
+.ruta-selector{display:flex;flex-direction:column;gap:10px;max-width:420px;}
+.ruta-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--topo);margin-bottom:4px;
+}
+.ruta-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;text-decoration:none;
+  border:1px solid var(--border-ink-mid);background:var(--parchment);
+  transition:all .22s;
+}
+.ruta-btn:hover{border-color:var(--traco);background:var(--traco-light);}
+.ruta-btn-left{display:flex;align-items:center;gap:14px;}
+.ruta-icon{width:36px;height:36px;background:var(--traco-light);border:1px solid var(--border-traco);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ruta-icon svg{width:16px;height:16px;stroke:var(--traco);stroke-width:1.5;fill:none;stroke-linecap:round;}
+.ruta-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.ruta-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--topo);text-transform:uppercase;}
+.ruta-arrow{font-family:'DM Mono',monospace;font-size:14px;color:var(--topo);transition:color .2s,transform .2s;}
+.ruta-btn:hover .ruta-arrow{color:var(--traco);transform:translateX(3px);}
+
+/* Hero derecho */
+.hero-right{
+  background:var(--traco);padding:72px 80px 72px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-right::before{
+  content:'';position:absolute;
+  right:-60px;bottom:-60px;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,0.06);
+}
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(26px,3vw,42px);font-style:italic;
+  color:rgba(255,255,255,0.85);line-height:1.25;margin-bottom:40px;
+}
+.hero-tagline strong{font-style:normal;font-weight:400;color:#fff;}
+.hero-tramites{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.15);margin-bottom:28px;
+}
+.ht-item{
+  background:rgba(255,255,255,0.08);padding:18px 16px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+  display:flex;align-items:center;gap:8px;
+}
+.ht-item::before{content:'→';color:rgba(255,255,255,0.4);}
+.hero-promise{
+  background:rgba(0,0,0,0.15);padding:20px 24px;
+  border-left:3px solid rgba(255,255,255,0.4);
+}
+.hp-text{
+  font-family:'Cormorant Garamond',serif;font-size:18px;
+  font-weight:300;color:rgba(255,255,255,0.8);line-height:1.5;
+}
+
+/* ── SECCIONES ── */
+section{padding:88px 80px;border-bottom:1px solid var(--border-ink);}
+section.alt{background:var(--linen);}
+section.parch{background:var(--parchment);}
+section.dark{background:var(--obsidian);border-color:rgba(201,169,110,.12);}
+section.traco-dark{background:var(--traco-deep);border-color:rgba(255,255,255,.08);}
+
+.sec-header{display:flex;align-items:flex-start;gap:48px;margin-bottom:64px;}
+.sec-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--traco);letter-spacing:.1em;padding-top:6px;white-space:nowrap;flex-shrink:0;}
+.sec-num.on-dark{color:rgba(255,255,255,.5);}
+.sec-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--topo);text-transform:uppercase;margin-bottom:12px;}
+.sec-label.on-dark{color:rgba(255,255,255,.35);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:var(--ink);}
+.sec-title em{font-style:italic;color:var(--traco);}
+.sec-title.on-dark{color:#fff;}
+.sec-title.on-dark em{color:rgba(255,255,255,.65);}
+.sec-intro{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;line-height:1.65;color:var(--topo-dark);max-width:640px;margin-bottom:52px;}
+
+/* ── DOS RUTAS ── */
+.rutas-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border-traco);border:1px solid var(--border-traco);
+}
+.ruta-col{padding:48px 44px;}
+.ruta-col-p{background:var(--marfil);}
+.ruta-col-e{background:var(--parchment);}
+.rc-header{
+  display:flex;align-items:center;gap:14px;
+  padding-bottom:24px;border-bottom:1px solid var(--border-ink);margin-bottom:28px;
+}
+.rc-badge{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border:1px solid var(--border-traco-mid);
+  color:var(--traco);background:var(--traco-light);
+}
+.rc-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--ink);}
+.tramite-list{list-style:none;}
+.tramite-list li{
+  padding:14px 0;border-bottom:1px solid var(--border-ink);
+  display:flex;align-items:flex-start;gap:12px;
+}
+.tramite-list li:last-child{border-bottom:none;padding-bottom:0;}
+.tl-dot{width:6px;height:6px;border-radius:50%;background:var(--traco);flex-shrink:0;margin-top:7px;}
+.tl-text{}
+.tl-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.tl-desc{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:var(--topo-dark);line-height:1.5;}
+.rc-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:28px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--traco);
+  text-decoration:none;padding:13px 22px;transition:background .2s;
+}
+.rc-cta:hover{background:var(--traco-deep);}
+
+/* ── CÓMO FUNCIONA ── */
+.pasos-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border-traco);border:1px solid var(--border-traco);
+}
+.paso-card{background:var(--marfil);padding:36px 28px;position:relative;}
+.paso-card::after{
+  content:'→';position:absolute;top:36px;right:-1px;
+  font-family:'DM Mono',monospace;font-size:14px;color:var(--traco);
+  transform:translateX(50%);background:var(--marfil);padding:0 4px;z-index:1;
+}
+.paso-card:last-child::after{display:none;}
+.paso-num{font-family:'DM Mono',monospace;font-size:32px;font-weight:300;color:rgba(232,101,10,.12);line-height:1;margin-bottom:12px;}
+.paso-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);margin-bottom:8px;}
+.paso-desc{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:var(--topo-dark);line-height:1.55;}
+
+/* ── COMPROMISO ── */
+.compromiso-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);
+}
+.comp-card{background:rgba(255,255,255,.06);padding:36px 28px;}
+.comp-icon{
+  width:40px;height:40px;border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.comp-icon svg{width:18px;height:18px;stroke:#fff;stroke-width:1.5;fill:none;stroke-linecap:round;opacity:.7;}
+.comp-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin-bottom:8px;}
+.comp-desc{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.6;}
+
+/* ── CONTACTO ── */
+.contact-grid{
+  display:grid;grid-template-columns:3fr 2fr;
+  gap:1px;background:var(--border-traco);border:1px solid var(--border-traco);
+}
+.contact-form-cell{background:var(--parchment);padding:52px 48px;}
+.contact-info-cell{background:var(--traco);padding:52px 40px;}
+.form-group{margin-bottom:22px;}
+.form-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--topo);display:block;margin-bottom:8px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input,.form-select,.form-textarea{
+  width:100%;background:var(--marfil);border:1px solid var(--border-ink-mid);
+  color:var(--ink);font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;padding:13px 15px;
+  outline:none;transition:border-color .2s;appearance:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--traco);}
+.form-textarea{resize:vertical;min-height:110px;}
+.form-submit{
+  width:100%;font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:var(--traco);border:none;
+  padding:17px;cursor:pointer;transition:background .2s;
+}
+.form-submit:hover{background:var(--traco-deep);}
+.ci-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;}
+.ci-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;line-height:1.2;margin-bottom:28px;}
+.ci-item{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.ci-item:last-child{border-bottom:none;}
+.ci-item-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:5px;}
+.ci-item-value{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:#fff;}
+.wa-btn{
+  display:flex;align-items:center;gap:10px;margin-top:24px;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--jade);border:1px solid rgba(26,122,82,.3);
+  padding:13px 20px;text-decoration:none;transition:background .2s;
+}
+.wa-btn:hover{background:rgba(26,122,82,.08);}
+.wa-dot{width:8px;height:8px;border-radius:50%;background:var(--jade);}
+.grupo-badge{margin-top:24px;padding:16px 18px;background:rgba(0,0,0,.2);display:flex;align-items:center;gap:12px;}
+.gb-dot{width:8px;height:8px;border-radius:50%;background:var(--oro);flex-shrink:0;}
+.gb-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:4px;}
+.gb-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,.75);}
+
+/* ── FOOTER ── */
+footer{background:var(--obsidian);border-top:1px solid rgba(201,169,110,.12);padding:48px 80px 32px;}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(201,169,110,.1);margin-bottom:28px;}
+.footer-brand-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--marfil);letter-spacing:.08em;margin-bottom:2px;}
+.footer-brand-sub{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--topo);text-transform:uppercase;margin-bottom:4px;}
+.footer-brand-tagline{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--traco);margin-bottom:14px;opacity:.8;}
+.footer-brand-desc{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;color:var(--topo);line-height:1.6;max-width:260px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:9px;}
+.footer-links a{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;color:var(--topo);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--marfil);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--topo);}
+.footer-sema{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.45);}
+.footer-sema a{color:rgba(201,169,110,.45);text-decoration:none;}
+.footer-sema a:hover{color:var(--oro);}
+
+/* ── ANIMS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.fade-up{animation:fadeUp .6s ease both;}
+.d1{animation-delay:.08s;}.d2{animation-delay:.2s;}
+.d3{animation-delay:.33s;}.d4{animation-delay:.46s;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:1024px){
+  .grupo-bar,.nav-links{display:none;}
+  nav{padding:0 32px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{padding:48px 32px;}
+  section{padding:64px 32px;}
+  .rutas-grid,.pasos-grid,.compromiso-grid,.contact-grid{grid-template-columns:1fr;}
+  .pasos-grid{grid-template-columns:1fr 1fr;}
+  .paso-card::after{display:none;}
+  .footer-inner{flex-direction:column;gap:28px;}
+  .sec-header{flex-direction:column;gap:12px;}
+}
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-wa{display:none;}
+  .nav-hamburger{display:flex;}
+  section{padding:52px 20px;}
+  .hero-left{padding:52px 20px;}
+  .hero-right{padding:36px 20px;}
+  .pasos-grid,.compromiso-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{padding:40px 20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="grupo-bar">
+  <div class="grupo-bar-left">
+    <span>Una marca de</span>
+    <span class="grupo-bar-sep">/</span>
+    <a href="index-claro.html">Grupo Análisis &amp; Consultorías</a>
+  </div>
+  <div class="grupo-bar-right">A&amp;C · SADI · FASI · SOFTPROCESS · Contadores en Colombia</div>
+</div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">TRC</div>
+    <div>
+      <div class="nav-logo-text">TRACO</div>
+      <div class="nav-logo-sub">Trámites Colombia</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#tramites">Trámites</a></li>
+    <li><a href="#proceso">Cómo funciona</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/573000000000" target="_blank" class="nav-wa">
+      <div class="nav-wa-dot"></div>WhatsApp
+    </a>
+    <a href="#contacto" class="nav-cta">Iniciar trámite</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-text">TRC</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up d1">Trámites Colombia · Grupo A&amp;C</div>
+    <h1 class="hero-title fade-up d2">
+      Sus trámites,
+      <em>resueltos</em>
+      <strong>sin filas.</strong>
+    </h1>
+    <div class="hero-rule fade-up d3"></div>
+    <p class="hero-desc fade-up d3">TRACO gestiona trámites ante entidades del Estado colombiano para personas naturales y empresas. Rapidez, trazabilidad y un equipo que conoce el sistema por dentro.</p>
+    <div class="ruta-selector fade-up d4">
+      <div class="ruta-label">¿Qué tipo de cliente es usted?</div>
+      <a href="#tramites-personas" class="ruta-btn">
+        <div class="ruta-btn-left">
+          <div class="ruta-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div>
+            <div class="ruta-title">Soy persona natural</div>
+            <div class="ruta-sub">RUT · RUNT · Cámara · Documentos · Certificados</div>
+          </div>
+        </div>
+        <div class="ruta-arrow">→</div>
+      </a>
+      <a href="#tramites-empresas" class="ruta-btn">
+        <div class="ruta-btn-left">
+          <div class="ruta-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="13" rx="1"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg>
+          </div>
+          <div>
+            <div class="ruta-title">Represento una empresa</div>
+            <div class="ruta-sub">Constitución · Renovación · Registros · Licencias</div>
+          </div>
+        </div>
+        <div class="ruta-arrow">→</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-tagline">"Los trámites son <strong>predecibles.</strong><br>La burocracia no tiene por qué<br>paralizarle."</div>
+    <div class="hero-tramites">
+      <div class="ht-item">RUT · DIAN</div>
+      <div class="ht-item">Cámara de Comercio</div>
+      <div class="ht-item">RUNT</div>
+      <div class="ht-item">Superintendencias</div>
+      <div class="ht-item">Notariales</div>
+      <div class="ht-item">Licencias</div>
+      <div class="ht-item">Registros públicos</div>
+      <div class="ht-item">Certificados</div>
+    </div>
+    <div class="hero-promise">
+      <div class="hp-text">Con TRACO usted sabe exactamente en qué etapa está su trámite y cuándo estará listo. Sin llamadas al vacío, sin sorpresas.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TRÁMITES POR RUTA ══ -->
+<section id="tramites" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">01 —</div>
+    <div>
+      <div class="sec-label">Servicios TRACO</div>
+      <h2 class="sec-title">Trámites para <em>personas</em><br>y para <em>empresas</em></h2>
+    </div>
+  </div>
+  <div class="rutas-grid">
+    <div class="ruta-col ruta-col-p" id="tramites-personas">
+      <div class="rc-header">
+        <span class="rc-badge">Personas naturales</span>
+        <div class="rc-title">Su vida, en regla.</div>
+      </div>
+      <ul class="tramite-list">
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">RUT · Registro Único Tributario</div><div class="tl-desc">Inscripción, actualización de actividad económica, cambio de datos personales y responsabilidades ante la DIAN. Primera vez o actualización.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">RUNT · Trámites vehiculares</div><div class="tl-desc">Traspaso, duplicados de licencia, revisión de multas, certificados de tradición y movilidad para vehículos particulares y motos.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Certificados y apostillas</div><div class="tl-desc">Certificados judiciales, antecedentes disciplinarios, apostilla de documentos colombianos para uso en el exterior.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Trámites notariales</div><div class="tl-desc">Escrituras, poderes, declaraciones extrajuicio, autenticaciones y correcciones de registros civiles.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Seguridad social</div><div class="tl-desc">Afiliaciones, retiros, traslados de fondo de pensión y cesantías, correcciones de aportes y certificaciones.</div></div></li>
+      </ul>
+      <a href="#contacto" class="rc-cta">Iniciar mi trámite personal →</a>
+    </div>
+    <div class="ruta-col ruta-col-e" id="tramites-empresas">
+      <div class="rc-header">
+        <span class="rc-badge">Empresas</span>
+        <div class="rc-title">Su empresa, al día.</div>
+      </div>
+      <ul class="tramite-list">
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Constitución de sociedades</div><div class="tl-desc">SAS, SRL, SA y demás formas societarias. Escritura, registro en Cámara de Comercio, RUT empresarial y apertura de cuenta bancaria.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Renovación de matrícula mercantil</div><div class="tl-desc">Renovación oportuna para evitar multas y mantener el registro activo. Persona natural comerciante o establecimiento de comercio.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Licencias y permisos de operación</div><div class="tl-desc">Licencias de funcionamiento, uso de suelo, permiso de bomberos, concepto sanitario y demás habilitaciones sectoriales.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Registros ante Superintendencias</div><div class="tl-desc">Inscripciones, renovaciones y actualización de información ante Supersociedades, Superfinanciera y entidades de vigilancia sectorial.</div></div></li>
+        <li><div class="tl-dot"></div><div class="tl-text"><div class="tl-name">Liquidación y cancelación</div><div class="tl-desc">Proceso completo de liquidación de sociedad o cancelación de matrícula mercantil. Trámite correcto ante todas las entidades.</div></div></li>
+      </ul>
+      <a href="#contacto" class="rc-cta">Iniciar trámite empresarial →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CÓMO FUNCIONA ══ -->
+<section id="proceso" class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">02 —</div>
+    <div>
+      <div class="sec-label">El proceso TRACO</div>
+      <h2 class="sec-title">Cuatro pasos.<br><em>Un trámite resuelto.</em></h2>
+    </div>
+  </div>
+  <div class="pasos-grid">
+    <div class="paso-card">
+      <div class="paso-num">01</div>
+      <div class="paso-title">Consulta inicial</div>
+      <div class="paso-desc">Nos cuenta qué necesita. Evaluamos el trámite, los requisitos y le decimos exactamente qué documentos necesita preparar y cuánto tiempo toma. Sin cobros ocultos.</div>
+    </div>
+    <div class="paso-card">
+      <div class="paso-num">02</div>
+      <div class="paso-title">Recolección de documentos</div>
+      <div class="paso-desc">Le enviamos un checklist exacto. Usted nos entrega los documentos y nosotros verificamos que todo esté correcto antes de iniciar el trámite ante la entidad.</div>
+    </div>
+    <div class="paso-card">
+      <div class="paso-num">03</div>
+      <div class="paso-title">Gestión y seguimiento</div>
+      <div class="paso-desc">TRACO gestiona el trámite directamente. Le informamos el estado en cada etapa — sin que usted tenga que llamar ni hacer fila en ninguna entidad.</div>
+    </div>
+    <div class="paso-card">
+      <div class="paso-num">04</div>
+      <div class="paso-title">Entrega y soporte</div>
+      <div class="paso-desc">Entregamos el resultado del trámite con toda la documentación soporte. Si surge algún inconveniente, lo resolvemos sin costo adicional.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPROMISO ══ -->
+<section class="traco-dark reveal">
+  <div class="sec-header">
+    <div class="sec-num on-dark">03 —</div>
+    <div>
+      <div class="sec-label on-dark">Por qué TRACO</div>
+      <h2 class="sec-title on-dark">Lo que nos define.<br><em>Lo que nos diferencia.</em></h2>
+    </div>
+  </div>
+  <div class="compromiso-grid">
+    <div class="comp-card">
+      <div class="comp-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="comp-title">Trazabilidad total</div>
+      <div class="comp-desc">Cada trámite tiene seguimiento en tiempo real. Usted sabe exactamente en qué entidad está su caso y en qué etapa del proceso.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="comp-title">Plazos cumplidos</div>
+      <div class="comp-desc">Le damos una fecha estimada de entrega y trabajamos para cumplirla. Si la entidad genera demoras, se las comunicamos de inmediato con alternativas.</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="comp-title">Respaldo del Grupo A&amp;C</div>
+      <div class="comp-desc">TRACO opera dentro del ecosistema del Grupo A&C. Si su trámite genera una implicación tributaria o legal, tiene acceso directo a los especialistas del grupo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACTO ══ -->
+<section id="contacto" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">04 —</div>
+    <div>
+      <div class="sec-label">Iniciar</div>
+      <h2 class="sec-title">Cuéntenos su trámite.<br><em>Nosotros lo resolvemos.</em></h2>
+    </div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-form-cell">
+      <p class="sec-intro" style="font-size:17px;margin-bottom:28px;">Descríbanos el trámite que necesita. Le respondemos en menos de 24 horas con los requisitos exactos y el costo del servicio.</p>
+      <form onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" class="form-input" placeholder="Su nombre">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Teléfono / WhatsApp</label>
+            <input type="tel" class="form-input" placeholder="+57 300 000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tipo de cliente</label>
+          <select class="form-select">
+            <option>Persona natural</option>
+            <option>Empresa / pyme</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Qué trámite necesita?</label>
+          <select class="form-select">
+            <option value="">Seleccione una opción</option>
+            <optgroup label="Personas naturales">
+              <option>RUT · DIAN</option><option>RUNT · Vehículos</option>
+              <option>Certificados y apostillas</option><option>Trámites notariales</option>
+              <option>Seguridad social</option>
+            </optgroup>
+            <optgroup label="Empresas">
+              <option>Constitución de sociedad</option><option>Renovación matrícula mercantil</option>
+              <option>Licencias y permisos</option><option>Superintendencias</option>
+              <option>Liquidación o cancelación</option>
+            </optgroup>
+            <option>No sé cuál necesito — asesórenme</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cuéntenos más</label>
+          <textarea class="form-textarea" placeholder="Describa su situación específica. Entre más detalle nos dé, más rápido podemos ayudarle…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar solicitud →</button>
+      </form>
+    </div>
+    <div class="contact-info-cell">
+      <div class="ci-label">TRACO · Trámites Colombia</div>
+      <div class="ci-title">Respuesta en menos de 24 horas.</div>
+      <div class="ci-item"><div class="ci-item-label">Sede</div><div class="ci-item-value">Medellín, Antioquia · Colombia</div></div>
+      <div class="ci-item"><div class="ci-item-label">Teléfono</div><div class="ci-item-value">Por confirmar</div></div>
+      <div class="ci-item"><div class="ci-item-label">Correo</div><div class="ci-item-value">Por confirmar</div></div>
+      <div class="ci-item"><div class="ci-item-label">Horario</div><div class="ci-item-value">Lunes a viernes · 8:00 am – 6:00 pm</div></div>
+      <div class="ci-item" style="border-bottom:none;"><div class="ci-item-label">Ecosistema</div><div class="ci-item-value" style="font-size:14px;line-height:2;">Grupo Análisis &amp; Consultorías<br>A&amp;C · SADI · FASI · SOFTPROCESS</div></div>
+      <a href="https://wa.me/573000000000" target="_blank" class="wa-btn">
+        <div class="wa-dot"></div>Escribir por WhatsApp ahora
+      </a>
+      <div class="grupo-badge">
+        <div class="gb-dot"></div>
+        <div><div class="gb-label">Parte de</div><div class="gb-name">Grupo Análisis &amp; Consultorías</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">TRACO</div>
+      <div class="footer-brand-sub">Trámites Colombia · Grupo A&amp;C</div>
+      <div class="footer-brand-tagline">"Sus trámites, sin filas."</div>
+      <p class="footer-brand-desc">Gestión ágil de trámites ante entidades del Estado colombiano para personas naturales y empresas. Medellín, Colombia.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Trámites</div>
+      <ul class="footer-links">
+        <li><a href="#tramites-personas">Personas naturales</a></li>
+        <li><a href="#tramites-empresas">Empresas</a></li>
+        <li><a href="#proceso">Cómo funciona</a></li>
+        <li><a href="#contacto">Iniciar trámite</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">El grupo</div>
+      <ul class="footer-links">
+        <li><a href="index-claro.html">Grupo A&amp;C</a></li>
+        <li><a href="analisis-consultorias.html">A&amp;C</a></li>
+        <li><a href="fasi.html">FASI</a></li>
+        <li><a href="#">SADI · SOFTPROCESS</a></li>
+        <li><a href="contadores-colombia.html">Contadores en Col.</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 TRACO · Trámites Colombia · Una marca Grupo A&amp;C</div>
+    <div class="footer-sema">Identidad y portal · <a href="#">SEMA · Brand Intelligence</a></div>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((e) => {
+  e.forEach(r => { if(r.isIntersecting){ r.target.classList.add('visible'); obs.unobserve(r.target); }});
+},{ threshold:0.07 });
+reveals.forEach(el => obs.observe(el));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Solicitud recibida ✓';
+  btn.style.background = 'var(--jade)';
+  setTimeout(() => { btn.textContent = 'Enviar solicitud →'; btn.style.background = 'var(--traco)'; }, 4000);
+}
+document.getElementById('hamburger').addEventListener('click', function(){
+  const l = document.querySelector('.nav-links');
+  if(l) l.style.display = l.style.display === 'flex' ? 'none' : 'flex';
+});
+</script>
+</body>
+</html>

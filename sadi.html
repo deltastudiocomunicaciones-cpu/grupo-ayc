@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SADI · Software contable · Facturación y nómina electrónica · Colombia</title>
+<meta name="description" content="SADI — Sistema Administrativo de Información. Software contable, facturación electrónica y nómina para empresas colombianas. Multiplataforma, desarrollado en Colombia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian:  #0F0E0C;
+  --carbon:    #2A2620;
+  --oro:       #C9A96E;
+  --marfil:    #F7F4EF;
+  --linen:     #EDE8DF;
+  --parchment: #F9F7F3;
+  --topo:      #8A7968;
+  --topo-dark: #5C5244;
+  --ink:       #1E1B16;
+  --jade:      #1A7A52;
+
+  /* Paleta SADI — naranja corporativo propio */
+  --sadi:        #F05A1A;
+  --sadi-deep:   #C44410;
+  --sadi-light:  #FEF0EA;
+  --sadi-mid:    #F47840;
+
+  --border-sadi:     rgba(240,90,26,0.18);
+  --border-sadi-mid: rgba(240,90,26,0.35);
+  --border-ink:      rgba(30,27,22,0.10);
+  --border-ink-mid:  rgba(30,27,22,0.18);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--marfil);color:var(--ink);font-family:'Syne',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+.grupo-bar{background:var(--obsidian);display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:36px;}
+.grupo-bar-left{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--topo);}
+.grupo-bar-left a{color:var(--oro);text-decoration:none;transition:opacity .2s;}
+.grupo-bar-left a:hover{opacity:.75;}
+.grupo-bar-sep{color:rgba(138,121,104,.3);}
+.grupo-bar-right{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.4);}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:68px;background:rgba(247,244,239,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-sadi);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 1px 20px rgba(240,90,26,0.08);}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-mark{width:38px;height:38px;background:var(--sadi);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:12px;color:#fff;letter-spacing:.04em;}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--ink);letter-spacing:.1em;line-height:1.2;}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;color:var(--topo);text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--topo-dark);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--sadi);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-wa{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--jade);text-decoration:none;border:1px solid rgba(26,122,82,.25);padding:8px 16px;transition:background .2s;}
+.nav-wa:hover{background:rgba(26,122,82,.06);}
+.nav-wa-dot{width:7px;height:7px;border-radius:50%;background:var(--jade);}
+.nav-cta{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--sadi);padding:10px 20px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--sadi-deep);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);}
+
+/* ── HERO SADI ── */
+.hero{min-height:calc(100vh - 104px);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 90% 50%, rgba(240,90,26,0.06) 0%, transparent 65%);pointer-events:none;}
+.hero-bg{position:absolute;bottom:-30px;right:-20px;font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(100px,18vw,280px);line-height:.85;color:rgba(240,90,26,0.04);text-transform:uppercase;pointer-events:none;user-select:none;}
+.hero-left{padding:72px 60px 72px 80px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border-sadi);position:relative;z-index:1;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sadi);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--sadi);}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,5vw,72px);line-height:1.03;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px;}
+.hero-title em{font-style:italic;color:var(--sadi);}
+.hero-title strong{font-weight:600;display:block;}
+.hero-rule{width:44px;height:1px;background:var(--sadi);margin:28px 0;}
+.hero-desc{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;line-height:1.65;color:var(--topo-dark);max-width:420px;margin-bottom:44px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-sadi{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--sadi);padding:16px 32px;text-decoration:none;transition:background .2s;display:inline-block;}
+.btn-sadi:hover{background:var(--sadi-deep);}
+.btn-ghost{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--sadi);border:1px solid var(--border-sadi-mid);padding:15px 32px;text-decoration:none;transition:all .2s;display:inline-block;}
+.btn-ghost:hover{border-color:var(--sadi);background:var(--sadi-light);}
+
+.hero-right{background:var(--obsidian);padding:72px 80px 72px 60px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.hero-right::before{content:'';position:absolute;right:-40px;top:-40px;width:250px;height:250px;border-radius:50%;border:1px solid rgba(240,90,26,0.12);}
+.hero-right::after{content:'';position:absolute;right:-70px;top:-70px;width:350px;height:350px;border-radius:50%;border:1px solid rgba(240,90,26,0.06);}
+.hr-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--sadi);margin-bottom:20px;position:relative;z-index:1;}
+.hr-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.8vw,38px);font-weight:300;font-style:italic;color:rgba(247,244,239,.85);line-height:1.25;margin-bottom:36px;position:relative;z-index:1;}
+.hr-tagline strong{font-style:normal;font-weight:400;color:var(--sadi);}
+.modulos-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(240,90,26,0.2);border:1px solid rgba(240,90,26,0.2);position:relative;z-index:1;}
+.modulo-item{background:rgba(255,255,255,0.04);padding:18px 16px;}
+.mi-tag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--sadi);margin-bottom:4px;}
+.mi-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(247,244,239,.8);}
+.hero-badge{margin-top:20px;background:rgba(240,90,26,0.12);border:1px solid rgba(240,90,26,0.2);padding:16px 20px;position:relative;z-index:1;}
+.hb-text{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;font-style:italic;color:rgba(247,244,239,.55);line-height:1.5;}
+.hb-sub{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(240,90,26,.6);text-transform:uppercase;margin-top:6px;}
+
+/* ── SECCIONES ── */
+section{padding:88px 80px;border-bottom:1px solid var(--border-ink);}
+section.alt{background:var(--linen);}
+section.parch{background:var(--parchment);}
+section.dark{background:var(--obsidian);border-color:rgba(240,90,26,.12);}
+
+.sec-header{display:flex;align-items:flex-start;gap:48px;margin-bottom:64px;}
+.sec-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--sadi);letter-spacing:.1em;padding-top:6px;white-space:nowrap;flex-shrink:0;}
+.sec-num.on-dark{color:var(--sadi);}
+.sec-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--topo);text-transform:uppercase;margin-bottom:12px;}
+.sec-label.on-dark{color:rgba(255,255,255,.35);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:var(--ink);}
+.sec-title em{font-style:italic;color:var(--sadi);}
+.sec-title.on-dark{color:#fff;}
+.sec-title.on-dark em{color:var(--sadi);}
+.sec-intro{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;line-height:1.65;color:var(--topo-dark);max-width:640px;margin-bottom:52px;}
+.sec-intro.on-dark{color:rgba(255,255,255,.55);}
+
+/* ── MÓDULOS ── */
+.modulos-full{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-sadi);border:1px solid var(--border-sadi);}
+.modulo-card{background:var(--marfil);padding:40px 32px;position:relative;overflow:hidden;transition:background .2s;}
+.modulo-card:hover{background:var(--sadi-light);}
+.modulo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--sadi);}
+.mod-num{font-family:'DM Mono',monospace;font-size:32px;font-weight:300;color:rgba(240,90,26,.1);line-height:1;margin-bottom:14px;}
+.mod-tag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--sadi);margin-bottom:10px;display:block;}
+.mod-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:12px;}
+.mod-desc{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:var(--topo-dark);line-height:1.6;margin-bottom:18px;}
+.mod-features{list-style:none;}
+.mod-features li{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--topo-dark);padding:7px 0;border-bottom:1px solid var(--border-ink);display:flex;align-items:center;gap:7px;}
+.mod-features li:last-child{border-bottom:none;}
+.mf-dot{width:4px;height:4px;border-radius:50%;background:var(--sadi);flex-shrink:0;}
+
+/* ── DIFERENCIADORES ── */
+.dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,90,26,.2);border:1px solid rgba(240,90,26,.2);}
+.dif-card{background:rgba(255,255,255,.05);padding:36px 28px;}
+.dif-icon{width:40px;height:40px;border:1px solid rgba(240,90,26,.25);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.dif-icon svg{width:18px;height:18px;stroke:var(--sadi);stroke-width:1.5;fill:none;stroke-linecap:round;}
+.dif-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin-bottom:8px;}
+.dif-desc{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.6;}
+
+/* ── PRECIOS ── */
+.precios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-sadi);border:1px solid var(--border-sadi);margin-bottom:32px;}
+.precio-card{background:var(--marfil);padding:40px 32px;position:relative;}
+.precio-card.featured{background:var(--sadi);}
+.precio-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;background:var(--obsidian);color:var(--oro);padding:4px 14px;}
+.precio-plan{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--sadi);margin-bottom:14px;}
+.precio-plan.on-dark{color:rgba(255,255,255,.6);}
+.precio-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--ink);margin-bottom:8px;}
+.precio-name.on-dark{color:#fff;}
+.precio-desc{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:var(--topo-dark);line-height:1.55;margin-bottom:22px;}
+.precio-desc.on-dark{color:rgba(255,255,255,.6);}
+.precio-list{list-style:none;margin-bottom:26px;}
+.precio-list li{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--topo-dark);padding:8px 0;border-bottom:1px solid var(--border-ink);display:flex;gap:7px;align-items:center;}
+.precio-list li.on-dark{color:rgba(255,255,255,.55);border-bottom-color:rgba(255,255,255,.1);}
+.precio-list li:last-child{border-bottom:none;}
+.pl-check{font-size:11px;color:var(--sadi);}
+.pl-check.on-dark{color:rgba(255,255,255,.6);}
+.precio-cta{display:block;text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:13px;transition:all .2s;}
+.cta-light{color:#fff;background:var(--sadi);}
+.cta-light:hover{background:var(--sadi-deep);}
+.cta-dark{color:var(--obsidian);background:rgba(255,255,255,.9);}
+.cta-dark:hover{background:#fff;}
+
+/* ── CONTACTO ── */
+.contact-grid{display:grid;grid-template-columns:3fr 2fr;gap:1px;background:var(--border-sadi);border:1px solid var(--border-sadi);}
+.contact-form-cell{background:var(--parchment);padding:52px 48px;}
+.contact-info-cell{background:var(--sadi);padding:52px 40px;}
+.form-group{margin-bottom:22px;}
+.form-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--topo);display:block;margin-bottom:8px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--marfil);border:1px solid var(--border-ink-mid);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;padding:13px 15px;outline:none;transition:border-color .2s;appearance:none;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--sadi);}
+.form-textarea{resize:vertical;min-height:110px;}
+.form-submit{width:100%;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--sadi);border:none;padding:17px;cursor:pointer;transition:background .2s;}
+.form-submit:hover{background:var(--sadi-deep);}
+.ci-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px;}
+.ci-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;line-height:1.2;margin-bottom:28px;}
+.ci-item{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.ci-item:last-child{border-bottom:none;}
+.ci-item-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:5px;}
+.ci-item-value{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;color:#fff;}
+.wa-btn{display:flex;align-items:center;gap:10px;margin-top:24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--jade);border:1px solid rgba(26,122,82,.3);padding:13px 20px;text-decoration:none;transition:background .2s;}
+.wa-btn:hover{background:rgba(26,122,82,.08);}
+.wa-dot{width:8px;height:8px;border-radius:50%;background:var(--jade);}
+.grupo-badge{margin-top:24px;padding:16px 18px;background:rgba(0,0,0,.2);display:flex;align-items:center;gap:12px;}
+.gb-dot{width:8px;height:8px;border-radius:50%;background:var(--oro);flex-shrink:0;}
+.gb-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:4px;}
+.gb-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:rgba(255,255,255,.75);}
+
+footer{background:var(--obsidian);border-top:1px solid rgba(240,90,26,.12);padding:48px 80px 32px;}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:36px;border-bottom:1px solid rgba(201,169,110,.08);margin-bottom:28px;}
+.footer-brand-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--sadi);letter-spacing:.1em;margin-bottom:2px;}
+.footer-brand-sub{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;color:var(--topo);text-transform:uppercase;margin-bottom:14px;}
+.footer-brand-desc{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;color:var(--topo);line-height:1.6;max-width:260px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:9px;}
+.footer-links a{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:300;color:var(--topo);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--marfil);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--topo);}
+.footer-sema{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(138,121,104,.45);}
+.footer-sema a{color:rgba(201,169,110,.45);text-decoration:none;}
+.footer-sema a:hover{color:var(--oro);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.fade-up{animation:fadeUp .6s ease both;}
+.d1{animation-delay:.08s;}.d2{animation-delay:.2s;}.d3{animation-delay:.33s;}.d4{animation-delay:.46s;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:1024px){
+  .grupo-bar,.nav-links{display:none;}nav{padding:0 32px;}
+  .hero{grid-template-columns:1fr;}.hero-right{padding:48px 32px;}
+  .hero-left{padding:64px 32px;}section{padding:64px 32px;}
+  .modulos-full,.dif-grid,.precios-grid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;}.footer-inner{flex-direction:column;gap:28px;}
+  .sec-header{flex-direction:column;gap:12px;}
+}
+@media(max-width:640px){
+  nav{padding:0 20px;}.nav-wa{display:none;}.nav-hamburger{display:flex;}
+  section{padding:52px 20px;}.hero-left{padding:52px 20px;}.hero-right{padding:36px 20px;}
+  .modulos-full,.dif-grid,.precios-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}footer{padding:40px 20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="grupo-bar">
+  <div class="grupo-bar-left">
+    <span>Una marca de</span><span class="grupo-bar-sep">/</span>
+    <a href="index-claro.html">Grupo Análisis &amp; Consultorías</a>
+  </div>
+  <div class="grupo-bar-right">A&amp;C · FASI · TRACO · SOFTPROCESS · Contadores en Colombia</div>
+</div>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">SADi</div>
+    <div>
+      <div class="nav-logo-text">SADI</div>
+      <div class="nav-logo-sub">Sistema Administrativo de Información</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#contacto">Demo gratuita</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/573000000000" target="_blank" class="nav-wa"><div class="nav-wa-dot"></div>WhatsApp</a>
+    <a href="#contacto" class="nav-cta">Solicitar demo</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg">SADI</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up d1">Software contable colombiano · Grupo A&amp;C</div>
+    <h1 class="hero-title fade-up d2">
+      La contabilidad
+      <em>inteligente</em>
+      <strong>para su empresa.</strong>
+    </h1>
+    <div class="hero-rule fade-up d3"></div>
+    <p class="hero-desc fade-up d3">SADI es el sistema contable, de facturación electrónica y nómina desarrollado dentro del Grupo A&C para resolver los problemas reales de las empresas colombianas. No una adaptación de software extranjero — una plataforma construida desde adentro de la práctica contable colombiana.</p>
+    <div class="hero-actions fade-up d4">
+      <a href="#contacto" class="btn-sadi">Solicitar demo gratuita</a>
+      <a href="#modulos" class="btn-ghost">Ver módulos</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hr-label">SADI · Sistema Administrativo de Información</div>
+    <div class="hr-tagline">"Un software construido por quienes <strong>practican</strong> la contabilidad, no solo la programan."</div>
+    <div class="modulos-grid">
+      <div class="modulo-item"><div class="mi-tag">Módulo 01</div><div class="mi-name">Contabilidad general</div></div>
+      <div class="modulo-item"><div class="mi-tag">Módulo 02</div><div class="mi-name">Facturación electrónica</div></div>
+      <div class="modulo-item"><div class="mi-tag">Módulo 03</div><div class="mi-name">Nómina electrónica</div></div>
+      <div class="modulo-item"><div class="mi-tag">Módulo 04</div><div class="mi-name">Inventarios</div></div>
+      <div class="modulo-item"><div class="mi-tag">Módulo 05</div><div class="mi-name">Cartera y CxC</div></div>
+      <div class="modulo-item"><div class="mi-tag">Módulo 06</div><div class="mi-name">Informes y Power BI</div></div>
+    </div>
+    <div class="hero-badge">
+      <div class="hb-text">Habilitado ante la DIAN para facturación electrónica y nómina electrónica. Multiplataforma: web, Windows y móvil.</div>
+      <div class="hb-sub">Desarrollado en Colombia · Soporte en español</div>
+    </div>
+  </div>
+</div>
+
+<section id="modulos" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">01 —</div>
+    <div>
+      <div class="sec-label">Plataforma SADI</div>
+      <h2 class="sec-title">Seis módulos.<br><em>Un solo sistema.</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro">Cada módulo de SADI está diseñado para hablar con los demás. La factura que emite alimenta la contabilidad. La nómina que liquida actualiza las provisiones. El inventario que mueve refleja el costo. Un ecosistema, no una colección de herramientas.</p>
+  <div class="modulos-full">
+    <div class="modulo-card">
+      <div class="mod-num">01</div>
+      <span class="mod-tag">Contabilidad general</span>
+      <div class="mod-title">El núcleo del sistema</div>
+      <div class="mod-desc">Plan único de cuentas colombiano, asientos automáticos desde otros módulos, estados financieros en tiempo real y preparación para NIIF para Pymes.</div>
+      <ul class="mod-features">
+        <li><span class="mf-dot"></span>PUC Colombia actualizado</li>
+        <li><span class="mf-dot"></span>Balance y P&amp;G automáticos</li>
+        <li><span class="mf-dot"></span>Centros de costo</li>
+        <li><span class="mf-dot"></span>Conciliación bancaria</li>
+      </ul>
+    </div>
+    <div class="modulo-card">
+      <div class="mod-num">02</div>
+      <span class="mod-tag">Facturación electrónica</span>
+      <div class="mod-title">Habilitado ante la DIAN</div>
+      <div class="mod-desc">Emisión de facturas electrónicas, notas crédito y débito, documentos equivalentes y gestión de contingencias conforme a la normativa DIAN vigente.</div>
+      <ul class="mod-features">
+        <li><span class="mf-dot"></span>Habilitación DIAN incluida</li>
+        <li><span class="mf-dot"></span>Notas crédito y débito</li>
+        <li><span class="mf-dot"></span>Gestión de contingencias</li>
+        <li><span class="mf-dot"></span>Envío automático al cliente</li>
+      </ul>
+    </div>
+    <div class="modulo-card">
+      <div class="mod-num">03</div>
+      <span class="mod-tag">Nómina electrónica</span>
+      <div class="mod-title">Liquidación sin errores</div>
+      <div class="mod-desc">Liquidación mensual automatizada, cálculo de prestaciones, aportes PILA y transmisión de nómina electrónica a la DIAN. Para todos los tipos de contrato.</div>
+      <ul class="mod-features">
+        <li><span class="mf-dot"></span>Nómina electrónica DIAN</li>
+        <li><span class="mf-dot"></span>Liquidación de contratos</li>
+        <li><span class="mf-dot"></span>Aportes PILA integrados</li>
+        <li><span class="mf-dot"></span>Cesantías e intereses</li>
+      </ul>
+    </div>
+    <div class="modulo-card">
+      <div class="mod-num">04</div>
+      <span class="mod-tag">Inventarios</span>
+      <div class="mod-title">Control de existencias real</div>
+      <div class="mod-desc">Entradas, salidas, traslados y ajustes de inventario con valoración automática (PEPS, promedio ponderado) y conexión directa con facturación y costo de ventas.</div>
+      <ul class="mod-features">
+        <li><span class="mf-dot"></span>Múltiples bodegas</li>
+        <li><span class="mf-dot"></span>Métodos de costeo</li>
+        <li><span class="mf-dot"></span>Puntos de reorden</li>
+        <li><span class="mf-dot"></span>Integrado con facturación</li>
+      </ul>
+    </div>
+    <div class="modulo-card">
+      <div class="mod-num">05</div>
+      <span class="mod-tag">Cartera y cuentas por cobrar</span>
+      <div class="mod-title">Control de la liquidez</div>
+      <div class="mod-desc">Gestión de cartera, aplicación de pagos, estados de cuenta por cliente, alertas de vencimiento y conciliación con la contabilidad en tiempo real.</div>
+      <ul class="mod-features">
+        <li><span class="mf-dot"></span>Antigüedad de cartera</li>
+        <li><span class="mf-dot"></span>Alertas de vencimiento</li>
+        <li><span class="mf-dot"></span>Recibos de caja automáticos</li>
+        <li><span class="mf-dot"></span>Estado de cuenta por cliente</li>
+      </ul>
+    </div>
+    <div class="modulo-card">
+      <div class="mod-num">06</div>
+      <span class="mod-tag">Informes y Power BI</span>
+      <div class="mod-title">La información que importa</div>
+      <div class="mod-desc">Reportes contables, tributarios y administrativos estándar más integración con Power BI para dashboards ejecutivos personalizados. Desde el detalle hasta el resumen de junta.</div>
+      <ul class="mod-features">
+        <li><span class="mf-dot"></span>+50 reportes predefinidos</li>
+        <li><span class="mf-dot"></span>Exportación Excel y PDF</li>
+        <li><span class="mf-dot"></span>Conexión Power BI</li>
+        <li><span class="mf-dot"></span>Informes tributarios DIAN</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="dark reveal">
+  <div class="sec-header">
+    <div class="sec-num on-dark">02 —</div>
+    <div>
+      <div class="sec-label on-dark">Por qué SADI</div>
+      <h2 class="sec-title on-dark">Hecho en Colombia<br><em>para Colombia</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro on-dark">La mayoría de los softwares contables que usan las empresas colombianas son adaptaciones de sistemas diseñados para otras realidades fiscales. SADI nació al revés: desde la práctica diaria de una firma contable colombiana.</p>
+  <div class="dif-grid">
+    <div class="dif-card">
+      <div class="dif-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="dif-title">Normativa colombiana nativa</div>
+      <div class="dif-desc">PUC colombiano, retenciones, ICA, IVA, declaraciones DIAN y nómina PILA — todo configurado de fábrica para Colombia, no adaptado a posteriori.</div>
+    </div>
+    <div class="dif-card">
+      <div class="dif-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="dif-title">Soporte en español real</div>
+      <div class="dif-desc">Soporte técnico en español, por contadores que entienden el problema, no por operadores de call center que leen un guión. Respuesta el mismo día.</div>
+    </div>
+    <div class="dif-card">
+      <div class="dif-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="dif-title">Actualizaciones normativas incluidas</div>
+      <div class="dif-desc">Cada reforma tributaria, cada cambio de la DIAN, cada actualización de tarifas — incluida sin costo adicional. La normativa cambia, SADI la incorpora.</div>
+    </div>
+  </div>
+</section>
+
+<section id="precios" class="parch reveal">
+  <div class="sec-header">
+    <div class="sec-num">03 —</div>
+    <div>
+      <div class="sec-label">Planes SADI</div>
+      <h2 class="sec-title">El plan correcto<br><em>para cada empresa</em></h2>
+    </div>
+  </div>
+  <p class="sec-intro">Todos los planes incluyen soporte técnico, actualizaciones normativas y capacitación inicial. La diferencia está en el número de módulos y usuarios simultáneos.</p>
+  <div class="precios-grid">
+    <div class="precio-card">
+      <div class="precio-plan">Plan esencial</div>
+      <div class="precio-name">Facturación + Contabilidad</div>
+      <div class="precio-desc">Para empresas que necesitan cumplir con la DIAN y llevar su contabilidad de manera organizada. El punto de entrada a SADI.</div>
+      <ul class="precio-list">
+        <li><span class="pl-check">✓</span>Contabilidad general</li>
+        <li><span class="pl-check">✓</span>Facturación electrónica DIAN</li>
+        <li><span class="pl-check">✓</span>Reportes estándar</li>
+        <li><span class="pl-check">✓</span>2 usuarios simultáneos</li>
+        <li><span class="pl-check">✓</span>Soporte y actualizaciones</li>
+      </ul>
+      <a href="#contacto" class="precio-cta cta-light">Solicitar demo →</a>
+    </div>
+    <div class="precio-card featured">
+      <div class="precio-badge">Más solicitado</div>
+      <div class="precio-plan on-dark">Plan empresarial</div>
+      <div class="precio-name on-dark">Suite completa</div>
+      <div class="precio-desc on-dark">Para pymes que necesitan controlar todo su ciclo operativo: facturación, nómina, inventario y cartera integrados en un solo sistema.</div>
+      <ul class="precio-list">
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Todos los módulos</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Nómina electrónica DIAN</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Inventarios y cartera</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>5 usuarios simultáneos</li>
+        <li class="on-dark"><span class="pl-check on-dark">✓</span>Integración Power BI</li>
+      </ul>
+      <a href="#contacto" class="precio-cta cta-dark">Solicitar demo →</a>
+    </div>
+    <div class="precio-card">
+      <div class="precio-plan">Plan multi-empresa</div>
+      <div class="precio-name">Para grupos empresariales</div>
+      <div class="precio-desc">Para contadores, firmas y grupos empresariales que administran múltiples empresas desde una sola plataforma con usuarios ilimitados.</div>
+      <ul class="precio-list">
+        <li><span class="pl-check">✓</span>Empresas ilimitadas</li>
+        <li><span class="pl-check">✓</span>Usuarios ilimitados</li>
+        <li><span class="pl-check">✓</span>Todos los módulos</li>
+        <li><span class="pl-check">✓</span>Consultor dedicado A&amp;C</li>
+        <li><span class="pl-check">✓</span>Onboarding personalizado</li>
+      </ul>
+      <a href="#contacto" class="precio-cta cta-light">Solicitar cotización →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">04 —</div>
+    <div>
+      <div class="sec-label">Empiece aquí</div>
+      <h2 class="sec-title">La demo es<br><em>gratuita y sin compromisos</em></h2>
+    </div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-form-cell">
+      <p class="sec-intro" style="font-size:17px;margin-bottom:28px;">Le mostramos SADI funcionando con datos de su empresa. En 45 minutos verá exactamente cómo resuelve sus necesidades contables actuales.</p>
+      <form onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Nombre completo</label><input type="text" class="form-input" placeholder="Su nombre"></div>
+          <div class="form-group"><label class="form-label">Empresa</label><input type="text" class="form-input" placeholder="Nombre de la empresa"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Correo electrónico</label><input type="email" class="form-input" placeholder="correo@empresa.com"></div>
+          <div class="form-group"><label class="form-label">Teléfono / WhatsApp</label><input type="tel" class="form-input" placeholder="+57 300 000 0000"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Cuántos empleados tiene su empresa?</label>
+          <select class="form-select">
+            <option>1 a 5 empleados</option><option>6 a 20 empleados</option>
+            <option>21 a 50 empleados</option><option>Más de 50 empleados</option>
+            <option>Soy contador independiente / firma contable</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Qué módulo le interesa más?</label>
+          <select class="form-select">
+            <option>Facturación electrónica</option><option>Contabilidad general</option>
+            <option>Nómina electrónica</option><option>Suite completa</option>
+            <option>Multi-empresa</option><option>No sé — quiero ver todo</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">¿Qué software usa actualmente?</label><input type="text" class="form-input" placeholder="Siigo, Helisa, Excel, otro..."></div>
+        <button type="submit" class="form-submit">Solicitar demo gratuita →</button>
+      </form>
+    </div>
+    <div class="contact-info-cell">
+      <div class="ci-label">SADI · Soporte Colombia</div>
+      <div class="ci-title">Demo en 24 horas. Decisión sin presión.</div>
+      <div class="ci-item"><div class="ci-item-label">Duración de la demo</div><div class="ci-item-value">45 minutos · Online o presencial</div></div>
+      <div class="ci-item"><div class="ci-item-label">Soporte técnico</div><div class="ci-item-value">Lunes a viernes · 8am – 6pm</div></div>
+      <div class="ci-item"><div class="ci-item-label">Idioma</div><div class="ci-item-value">Español colombiano</div></div>
+      <div class="ci-item" style="border-bottom:none;"><div class="ci-item-label">Respaldo</div><div class="ci-item-value">Grupo Análisis &amp; Consultorías<br>20 años de práctica contable</div></div>
+      <a href="https://wa.me/573000000000" target="_blank" class="wa-btn"><div class="wa-dot"></div>Solicitar demo por WhatsApp</a>
+      <div class="grupo-badge"><div class="gb-dot"></div><div><div class="gb-label">Parte de</div><div class="gb-name">Grupo Análisis &amp; Consultorías</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">SADI</div>
+      <div class="footer-brand-sub">Sistema Administrativo de Información · Grupo A&amp;C</div>
+      <p class="footer-brand-desc">Software contable, facturación electrónica y nómina desarrollado en Colombia para empresas colombianas. Parte del ecosistema del Grupo A&C.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Módulos</div>
+      <ul class="footer-links">
+        <li><a href="#modulos">Contabilidad general</a></li>
+        <li><a href="#modulos">Facturación electrónica</a></li>
+        <li><a href="#modulos">Nómina electrónica</a></li>
+        <li><a href="#modulos">Inventarios</a></li>
+        <li><a href="#precios">Precios y planes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">El grupo</div>
+      <ul class="footer-links">
+        <li><a href="index-claro.html">Grupo A&amp;C</a></li>
+        <li><a href="analisis-consultorias.html">A&amp;C</a></li>
+        <li><a href="fasi.html">FASI</a></li>
+        <li><a href="traco.html">TRACO</a></li>
+        <li><a href="contadores-colombia.html">Contadores en Col.</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 SADI · Sistema Administrativo de Información · Una marca Grupo A&amp;C</div>
+    <div class="footer-sema">Identidad y portal · <a href="#">SEMA · Brand Intelligence</a></div>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((e) => {
+  e.forEach(r => { if(r.isIntersecting){ r.target.classList.add('visible'); obs.unobserve(r.target); }});
+},{ threshold:0.07 });
+reveals.forEach(el => obs.observe(el));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Demo agendada — le contactamos pronto ✓';
+  btn.style.background = 'var(--jade)';
+  setTimeout(() => { btn.textContent = 'Solicitar demo gratuita →'; btn.style.background = 'var(--sadi)'; }, 4000);
+}
+document.getElementById('hamburger').addEventListener('click', function(){
+  const l = document.querySelector('.nav-links');
+  if(l) l.style.display = l.style.display === 'flex' ? 'none' : 'flex';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis &amp; Consultorías · Consultoría tributaria y contable · Medellín</title>
+<meta name="description" content="Consultoría tributaria, contable y financiera para personas naturales y empresas en Colombia. Declaración de renta, planeación fiscal, NIIF, revisoría. Medellín.">
+<meta property="og:title" content="Análisis & Consultorías · Una marca Grupo A&C">
+<meta property="og:description" content="Su patrimonio, en manos de alguien que lo lee mejor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian: #0F0E0C;
+  --carbon:   #2A2620;
+  --oro:      #C9A96E;
+  --oro-deep: #A8803E;
+  --oro-light:#EAD9B4;
+  --cobre:    #B06B2A;
+  --cobre-light:#F0E0CC;
+  --marfil:   #F7F4EF;
+  --linen:    #EDE8DF;
+  --linen-deep:#E0D8CC;
+  --parchment:#F9F7F3;
+  --topo:     #8A7968;
+  --topo-dark:#5C5244;
+  --ink:      #1E1B16;
+  --jade:     #1A7A52;
+  --ruta-p:   #2C4A6E;   /* azul pizarra · personas */
+  --ruta-e:   #3D2B0D;   /* umber · empresas */
+  --border-oro:    rgba(201,169,110,0.22);
+  --border-oro-mid:rgba(201,169,110,0.42);
+  --border-ink:    rgba(30,27,22,0.10);
+  --border-ink-mid:rgba(30,27,22,0.18);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--marfil);color:var(--ink);
+  font-family:'Syne',sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+
+/* ── TOPBAR DEL GRUPO ── */
+.grupo-bar{
+  background:var(--obsidian);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:36px;
+}
+.grupo-bar-left{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--topo);
+  display:flex;align-items:center;gap:8px;
+}
+.grupo-bar-left a{
+  color:var(--oro);text-decoration:none;
+  transition:opacity .2s;
+}
+.grupo-bar-left a:hover{opacity:.75;}
+.grupo-bar-sep{color:rgba(138,121,104,.35);}
+.grupo-bar-right{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;color:rgba(138,121,104,.5);
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 64px;height:68px;
+  background:rgba(247,244,239,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border-oro);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 1px 20px rgba(30,27,22,0.07);}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-logo-ac{
+  width:38px;height:38px;border:1.5px solid var(--oro);
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-logo-ac-inner{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:14px;color:var(--oro-deep);letter-spacing:.04em;
+}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:16px;color:var(--ink);letter-spacing:.02em;line-height:1.2;
+}
+.nav-logo-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;color:var(--topo);text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--topo-dark);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--oro-deep);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-wa{
+  display:flex;align-items:center;gap:7px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--jade);text-decoration:none;
+  border:1px solid rgba(26,122,82,.25);
+  padding:8px 16px;transition:background .2s;
+}
+.nav-wa:hover{background:rgba(26,122,82,.06);}
+.nav-wa-dot{width:7px;height:7px;border-radius:50%;background:var(--jade);}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--marfil);background:var(--obsidian);
+  padding:10px 20px;text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:var(--carbon);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);}
+
+/* ── HERO CON SELECTOR DE RUTA ── */
+.hero{
+  min-height:calc(100vh - 104px);
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+  background:var(--marfil);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 70% at 90% 55%, rgba(201,169,110,0.08) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-left{
+  padding:72px 60px 72px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border-oro);position:relative;z-index:1;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--oro-deep);margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--oro);}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(44px,5vw,72px);line-height:1.04;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:8px;
+}
+.hero-title em{font-style:italic;color:var(--oro-deep);}
+.hero-title strong{font-weight:600;display:block;}
+.hero-rule{width:44px;height:1px;background:var(--oro);margin:28px 0;opacity:.65;}
+.hero-desc{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:420px;margin-bottom:44px;
+}
+
+/* ── SELECTOR DE RUTA ── */
+.ruta-selector{
+  display:flex;flex-direction:column;gap:10px;max-width:420px;
+}
+.ruta-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--topo);margin-bottom:4px;
+}
+.ruta-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;text-decoration:none;
+  border:1px solid var(--border-ink-mid);
+  background:var(--parchment);
+  transition:all .22s;cursor:pointer;
+}
+.ruta-btn:hover,.ruta-btn.active-p{
+  border-color:var(--ruta-p);
+  background:rgba(44,74,110,0.05);
+}
+.ruta-btn.active-e:hover,.ruta-btn.ruta-e:hover{
+  border-color:var(--cobre);
+  background:rgba(176,107,42,0.05);
+}
+.ruta-btn-left{display:flex;align-items:center;gap:14px;}
+.ruta-icon{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.ruta-icon-p{background:rgba(44,74,110,0.1);}
+.ruta-icon-e{background:rgba(176,107,42,0.1);}
+.ruta-icon svg{width:16px;height:16px;}
+.ruta-text{}
+.ruta-title{
+  font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:600;color:var(--ink);margin-bottom:2px;
+}
+.ruta-sub{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.08em;color:var(--topo);text-transform:uppercase;
+}
+.ruta-arrow{
+  font-family:'DM Mono',monospace;font-size:14px;
+  color:var(--topo);transition:color .2s,transform .2s;
+}
+.ruta-btn:hover .ruta-arrow{color:var(--ink);transform:translateX(3px);}
+
+.hero-right{
+  padding:72px 80px 72px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--parchment);position:relative;
+}
+/* Tarjeta de dirección */
+.director-card{
+  border:1px solid var(--border-oro);
+  background:var(--marfil);
+  padding:32px 28px;
+  margin-bottom:20px;
+  position:relative;
+}
+.director-tag{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--oro-deep);margin-bottom:16px;display:block;
+}
+.director-initial{
+  width:52px;height:52px;background:var(--obsidian);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;
+}
+.director-initial span{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:22px;color:var(--oro);letter-spacing:.04em;
+}
+.director-name{
+  font-family:'Cormorant Garamond',serif;font-size:22px;
+  font-weight:400;color:var(--ink);margin-bottom:4px;
+}
+.director-role{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--topo);
+  margin-bottom:16px;
+}
+.director-quote{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;font-style:italic;
+  color:var(--topo-dark);line-height:1.55;
+  border-left:2px solid var(--oro);
+  padding-left:16px;
+}
+/* mini stats */
+.mini-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);
+}
+.mini-stat{background:var(--marfil);padding:20px 16px;text-align:center;}
+.mini-stat-num{
+  font-family:'Cormorant Garamond',serif;font-size:32px;
+  font-weight:300;color:var(--oro-deep);line-height:1;margin-bottom:4px;
+}
+.mini-stat-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--topo);
+}
+
+/* ── SECCIONES ── */
+section{padding:88px 80px;border-bottom:1px solid var(--border-ink);}
+section.alt{background:var(--linen);}
+section.parch{background:var(--parchment);}
+section.dark{background:var(--obsidian);border-color:rgba(201,169,110,.12);}
+
+.sec-header{display:flex;align-items:flex-start;gap:48px;margin-bottom:64px;}
+.sec-num{
+  font-family:'DM Mono',monospace;font-size:10px;
+  color:var(--oro-deep);letter-spacing:.1em;padding-top:6px;
+  white-space:nowrap;flex-shrink:0;
+}
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.2em;color:var(--topo);text-transform:uppercase;margin-bottom:12px;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:var(--ink);
+}
+.sec-title em{font-style:italic;color:var(--oro-deep);}
+.sec-title.on-dark{color:var(--marfil);}
+.sec-title.on-dark em{color:var(--oro);}
+.sec-intro{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:300;line-height:1.65;
+  color:var(--topo-dark);max-width:620px;margin-bottom:52px;
+}
+.sec-intro.on-dark{color:rgba(247,244,239,.62);}
+
+/* ── RUTAS DE SERVICIO (dos columnas) ── */
+.rutas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);}
+.ruta-col{padding:48px 44px;}
+.ruta-col-p{background:var(--marfil);}
+.ruta-col-e{background:var(--parchment);}
+.ruta-col-header{
+  display:flex;align-items:center;gap:14px;
+  padding-bottom:24px;border-bottom:1px solid var(--border-ink);margin-bottom:28px;
+}
+.ruta-col-badge{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border:1px solid;
+}
+.badge-p{color:var(--ruta-p);border-color:rgba(44,74,110,.25);background:rgba(44,74,110,.05);}
+.badge-e{color:var(--cobre);border-color:rgba(176,107,42,.25);background:rgba(176,107,42,.05);}
+.ruta-col-title{
+  font-family:'Cormorant Garamond',serif;font-size:24px;
+  font-weight:400;color:var(--ink);
+}
+.service-list{list-style:none;}
+.service-list li{
+  padding:14px 0;border-bottom:1px solid var(--border-ink);
+  display:flex;align-items:flex-start;gap:12px;
+}
+.service-list li:last-child{border-bottom:none;padding-bottom:0;}
+.sl-dot{
+  width:6px;height:6px;border-radius:50%;
+  flex-shrink:0;margin-top:7px;
+}
+.sl-dot-p{background:var(--ruta-p);}
+.sl-dot-e{background:var(--cobre);}
+.sl-text{}
+.sl-name{
+  font-family:'Syne',sans-serif;font-size:13px;
+  font-weight:600;color:var(--ink);margin-bottom:3px;
+}
+.sl-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.5;
+}
+.ruta-col-cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:28px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;padding:13px 22px;
+  transition:all .2s;
+}
+.cta-p{color:var(--marfil);background:var(--ruta-p);}
+.cta-p:hover{opacity:.88;}
+.cta-e{color:var(--marfil);background:var(--cobre);}
+.cta-e:hover{opacity:.88;}
+
+/* ── PROPUESTA DE VALOR ── */
+.valor-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);
+}
+.valor-cell{background:var(--marfil);padding:40px 32px;transition:background .2s;}
+.valor-cell:hover{background:var(--linen);}
+.valor-cell.accent{background:var(--linen);}
+.valor-num{
+  font-family:'Cormorant Garamond',serif;font-size:44px;
+  font-weight:300;color:rgba(201,169,110,.25);
+  line-height:1;margin-bottom:12px;
+}
+.valor-title{
+  font-family:'Syne',sans-serif;font-size:12px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink);margin-bottom:10px;
+}
+.valor-desc{
+  font-family:'Cormorant Garamond',serif;font-size:17px;
+  font-weight:300;line-height:1.6;color:var(--topo-dark);
+}
+
+/* ── PROCESO ── */
+.proceso-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);
+  margin-bottom:48px;
+}
+.proceso-step{
+  background:var(--parchment);padding:36px 28px;
+  position:relative;
+}
+.proceso-step::after{
+  content:'→';
+  position:absolute;top:36px;right:-1px;
+  font-family:'DM Mono',monospace;font-size:14px;
+  color:var(--oro);transform:translateX(50%);
+  background:var(--parchment);padding:0 4px;
+  z-index:1;
+}
+.proceso-step:last-child::after{display:none;}
+.paso-num{
+  font-family:'DM Mono',monospace;font-size:28px;
+  font-weight:300;color:rgba(201,169,110,.2);
+  line-height:1;margin-bottom:12px;
+}
+.paso-title{
+  font-family:'Syne',sans-serif;font-size:12px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--ink);margin-bottom:8px;
+}
+.paso-desc{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  font-weight:300;color:var(--topo-dark);line-height:1.55;
+}
+
+/* ── MANIFESTO BANDA ── */
+.manifesto{
+  background:var(--obsidian);
+  padding:72px 80px;
+  display:grid;grid-template-columns:2fr 1fr;
+  gap:64px;align-items:center;
+  border-top:1px solid rgba(201,169,110,.12);
+  border-bottom:1px solid rgba(201,169,110,.12);
+}
+.manifesto-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,2.8vw,38px);
+  font-weight:300;font-style:italic;
+  line-height:1.3;color:var(--marfil);
+}
+.manifesto-text em{font-style:normal;color:var(--oro);}
+.manifesto-right{}
+.manifesto-right-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--topo);margin-bottom:16px;
+}
+.manifesto-tagline{
+  font-family:'Cormorant Garamond',serif;font-size:28px;
+  font-weight:300;font-style:italic;
+  color:var(--oro-light);line-height:1.3;
+}
+
+/* ── FAQ DIFERENCIADA ── */
+.faq-tabs{display:flex;gap:0;margin-bottom:40px;border-bottom:1px solid var(--border-ink);}
+.faq-tab{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:14px 24px;cursor:pointer;
+  color:var(--topo);border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;
+}
+.faq-tab.active-p{color:var(--ruta-p);border-bottom-color:var(--ruta-p);}
+.faq-tab.active-e{color:var(--cobre);border-bottom-color:var(--cobre);}
+.faq-panel{display:none;}
+.faq-panel.visible{display:block;}
+.faq-item{border-bottom:1px solid var(--border-ink);}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;
+  padding:20px 0;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.faq-q-text{
+  font-family:'Cormorant Garamond',serif;font-size:19px;
+  font-weight:400;color:var(--ink);line-height:1.3;text-align:left;
+}
+.faq-q-icon{
+  font-family:'DM Mono',monospace;font-size:18px;
+  color:var(--oro-deep);flex-shrink:0;transition:transform .2s;
+}
+.faq-item.open .faq-q-icon{transform:rotate(45deg);}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .35s ease;
+}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{
+  font-family:'Cormorant Garamond',serif;font-size:17px;
+  font-weight:300;color:var(--topo-dark);
+  line-height:1.65;padding-bottom:20px;
+}
+
+/* ── CONTACTO ── */
+.contact-grid{
+  display:grid;grid-template-columns:3fr 2fr;
+  gap:1px;background:var(--border-oro);border:1px solid var(--border-oro);
+}
+.contact-form-cell{background:var(--parchment);padding:52px 48px;}
+.contact-info-cell{background:var(--linen);padding:52px 40px;}
+.form-group{margin-bottom:22px;}
+.form-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--topo);display:block;margin-bottom:8px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input,.form-select,.form-textarea{
+  width:100%;background:var(--marfil);
+  border:1px solid var(--border-ink-mid);
+  color:var(--ink);font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;padding:13px 15px;
+  outline:none;transition:border-color .2s;appearance:none;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--oro);}
+.form-textarea{resize:vertical;min-height:110px;}
+.form-ruta-select{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px;
+}
+.form-ruta-opt{
+  border:1px solid var(--border-ink-mid);
+  padding:12px 16px;cursor:pointer;background:var(--marfil);
+  display:flex;align-items:center;gap:10px;transition:all .2s;
+}
+.form-ruta-opt input{display:none;}
+.form-ruta-opt.sel-p{border-color:var(--ruta-p);background:rgba(44,74,110,.05);}
+.form-ruta-opt.sel-e{border-color:var(--cobre);background:rgba(176,107,42,.05);}
+.form-ruta-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--topo-dark);
+}
+.form-submit{
+  width:100%;font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--marfil);background:var(--obsidian);
+  border:none;padding:17px;cursor:pointer;transition:background .2s;
+}
+.form-submit:hover{background:var(--carbon);}
+.contact-info-title{
+  font-family:'Cormorant Garamond',serif;font-size:28px;
+  font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:28px;
+}
+.contact-channel{
+  padding:16px 0;border-bottom:1px solid var(--border-ink);
+  display:flex;align-items:center;gap:14px;text-decoration:none;
+  transition:background .15s;
+}
+.contact-channel:hover{opacity:.8;}
+.ch-icon{
+  width:36px;height:36px;border:1px solid var(--border-ink-mid);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.ch-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--topo);margin-bottom:3px;
+}
+.ch-value{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--ink);
+}
+.wa-btn{
+  display:flex;align-items:center;gap:10px;margin-top:24px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--jade);border:1px solid rgba(26,122,82,.3);
+  padding:13px 20px;text-decoration:none;
+  transition:background .2s;
+}
+.wa-btn:hover{background:rgba(26,122,82,.06);}
+.wa-dot{width:8px;height:8px;border-radius:50%;background:var(--jade);}
+.grupo-badge{
+  margin-top:28px;padding:16px 18px;
+  background:var(--obsidian);
+  display:flex;align-items:center;gap:12px;
+}
+.gb-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--topo);margin-bottom:4px;
+}
+.gb-name{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;color:var(--oro);
+}
+.gb-dot{width:8px;height:8px;border-radius:50%;background:var(--oro);flex-shrink:0;}
+
+/* ── FOOTER MARCA ── */
+footer{
+  background:var(--obsidian);
+  border-top:1px solid rgba(201,169,110,.12);
+  padding:48px 80px 32px;
+}
+.footer-inner{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:40px;
+  padding-bottom:36px;
+  border-bottom:1px solid rgba(201,169,110,.1);
+  margin-bottom:28px;
+}
+.footer-brand-name{
+  font-family:'Cormorant Garamond',serif;font-size:20px;
+  font-weight:300;color:var(--marfil);margin-bottom:4px;
+}
+.footer-brand-sub{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:.18em;color:var(--topo);text-transform:uppercase;margin-bottom:14px;
+}
+.footer-brand-desc{
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-weight:300;color:var(--topo);line-height:1.6;max-width:260px;
+}
+.footer-col-title{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--oro);margin-bottom:16px;
+}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:9px;}
+.footer-links a{
+  font-family:'Cormorant Garamond',serif;font-size:14px;
+  font-weight:300;color:var(--topo);
+  text-decoration:none;transition:color .2s;
+}
+.footer-links a:hover{color:var(--marfil);}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--topo);}
+.footer-grupo{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;
+  color:rgba(138,121,104,.45);
+}
+.footer-grupo a{color:rgba(201,169,110,.45);text-decoration:none;}
+.footer-grupo a:hover{color:var(--oro);}
+
+/* ── ANIMS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.fade-up{animation:fadeUp .6s ease both;}
+.d1{animation-delay:.08s;}.d2{animation-delay:.2s;}
+.d3{animation-delay:.33s;}.d4{animation-delay:.46s;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .grupo-bar,.nav-links{display:none;}
+  nav{padding:0 32px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:64px 32px;}
+  section{padding:64px 32px;}
+  .rutas-grid,.valor-grid,.proceso-steps{grid-template-columns:1fr 1fr;}
+  .proceso-step::after{display:none;}
+  .contact-grid{grid-template-columns:1fr;}
+  .manifesto{grid-template-columns:1fr;gap:32px;padding:56px 32px;}
+  .footer-inner{flex-direction:column;gap:28px;}
+}
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-right{gap:8px;}
+  .nav-wa{display:none;}
+  .nav-hamburger{display:flex;}
+  section{padding:52px 20px;}
+  .hero-left{padding:52px 20px;}
+  .rutas-grid,.valor-grid,.proceso-steps{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-inner{padding:0 0 28px;}
+  footer{padding:40px 20px 24px;}
+  .sec-header{flex-direction:column;gap:12px;}
+  .faq-tabs{overflow-x:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ BARRA DEL GRUPO ══ -->
+<div class="grupo-bar">
+  <div class="grupo-bar-left">
+    <span>Una marca de</span>
+    <span class="grupo-bar-sep">/</span>
+    <a href="index-claro.html">Grupo Análisis &amp; Consultorías</a>
+  </div>
+  <div class="grupo-bar-right">SADI · FASI · TRACO · SOFTPROCESS · Contadores en Colombia</div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-ac"><div class="nav-logo-ac-inner">A&amp;C</div></div>
+    <div>
+      <div class="nav-logo-text">Análisis &amp; Consultorías</div>
+      <div class="nav-logo-sub">Medellín · Colombia</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Cómo trabajamos</a></li>
+    <li><a href="#preguntas">Preguntas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/573000000000" target="_blank" class="nav-wa">
+      <div class="nav-wa-dot"></div>
+      WhatsApp
+    </a>
+    <a href="#contacto" class="nav-cta">Hablar con un experto</a>
+  </div>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up d1">Consultoría tributaria · contable · financiera</div>
+    <h1 class="hero-title fade-up d2">
+      Su patrimonio,
+      <em>en manos de</em>
+      <strong>alguien que lo lee.</strong>
+    </h1>
+    <div class="hero-rule fade-up d3"></div>
+    <p class="hero-desc fade-up d3">
+      Veinte años de experiencia acompañando a personas naturales y empresas colombianas en cada decisión tributaria, contable y financiera que importa.
+    </p>
+
+    <div class="ruta-selector fade-up d4">
+      <div class="ruta-label">¿Cómo llega a nosotros?</div>
+      <a href="#servicios-personas" class="ruta-btn ruta-p" onclick="activarRuta('p',event)">
+        <div class="ruta-btn-left">
+          <div class="ruta-icon ruta-icon-p">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2C4A6E" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <div class="ruta-text">
+            <div class="ruta-title">Soy persona natural</div>
+            <div class="ruta-sub">Declaración de renta · patrimonio · independiente</div>
+          </div>
+        </div>
+        <div class="ruta-arrow">→</div>
+      </a>
+      <a href="#servicios-empresas" class="ruta-btn ruta-e" onclick="activarRuta('e',event)">
+        <div class="ruta-btn-left">
+          <div class="ruta-icon ruta-icon-e">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B06B2A" stroke-width="1.5" stroke-linecap="round">
+              <rect x="3" y="9" width="18" height="13" rx="1"/>
+              <path d="M8 9V7a4 4 0 0 1 8 0v2"/>
+              <line x1="12" y1="13" x2="12" y2="17"/>
+            </svg>
+          </div>
+          <div class="ruta-text">
+            <div class="ruta-title">Represento una empresa</div>
+            <div class="ruta-sub">Contabilidad · revisoría · consultoría</div>
+          </div>
+        </div>
+        <div class="ruta-arrow">→</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="director-card">
+      <span class="director-tag">Dirección · Análisis &amp; Consultorías</span>
+      <div class="director-initial"><span>RM</span></div>
+      <div class="director-name">LENNYN YEPES</div>
+      <div class="director-role">Director · Grupo A&amp;C</div>
+      <div class="director-quote">
+        "Tratamos cada patrimonio con el mismo rigor con que una gran firma trata a sus mejores clientes."
+      </div>
+    </div>
+    <div class="mini-stats">
+      <div class="mini-stat">
+        <div class="mini-stat-num">20<span style="font-size:18px;color:var(--topo)">+</span></div>
+        <div class="mini-stat-label">Años de experiencia</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-num">1K<span style="font-size:18px;color:var(--topo)">+</span></div>
+        <div class="mini-stat-label">Clientes atendidos</div>
+      </div>
+      <div class="mini-stat">
+        <div class="mini-stat-num">Col</div>
+        <div class="mini-stat-label">Presencia nacional</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SERVICIOS POR RUTA ══ -->
+<section id="servicios" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">01 —</div>
+    <div>
+      <div class="sec-label">Lo que hacemos</div>
+      <h2 class="sec-title">Servicios para <em>cada tipo</em><br>de cliente</h2>
+    </div>
+  </div>
+
+  <div class="rutas-grid">
+    <div class="ruta-col ruta-col-p" id="servicios-personas">
+      <div class="ruta-col-header">
+        <span class="ruta-col-badge badge-p">Personas naturales</span>
+        <div class="ruta-col-title">Su vida financiera, ordenada.</div>
+      </div>
+      <ul class="service-list">
+        <li>
+          <div class="sl-dot sl-dot-p"></div>
+          <div class="sl-text">
+            <div class="sl-name">Declaración de renta</div>
+            <div class="sl-desc">Presentación correcta y oportuna ante la DIAN. Revisamos, optimizamos y gestionamos su declaración anual con la profundidad que merece.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-p"></div>
+          <div class="sl-text">
+            <div class="sl-name">Planeación tributaria personal</div>
+            <div class="sl-desc">Estrategia fiscal durante todo el año — no solo en temporada — para reducir su carga tributaria dentro del marco legal colombiano.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-p"></div>
+          <div class="sl-text">
+            <div class="sl-name">Patrimonio e inversiones</div>
+            <div class="sl-desc">Estructuración y seguimiento de su patrimonio personal con criterio tributario. Inmuebles, acciones, fideicomisos y activos en Colombia.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-p"></div>
+          <div class="sl-text">
+            <div class="sl-name">Independientes y profesionales</div>
+            <div class="sl-desc">RUT, régimen, facturación electrónica, aportes a seguridad social y gestión contable para el profesional que trabaja por su cuenta.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-p"></div>
+          <div class="sl-text">
+            <div class="sl-name">Requerimientos DIAN</div>
+            <div class="sl-desc">Representación y respuesta técnica ante requerimientos, notificaciones y procesos de fiscalización de la DIAN.</div>
+          </div>
+        </li>
+      </ul>
+      <a href="#contacto" class="ruta-col-cta cta-p" onclick="preseleccionarRuta('p')">
+        Consultar como persona natural →
+      </a>
+    </div>
+
+    <div class="ruta-col ruta-col-e" id="servicios-empresas">
+      <div class="ruta-col-header">
+        <span class="ruta-col-badge badge-e">Empresas · Pymes</span>
+        <div class="ruta-col-title">Su empresa, con gobierno real.</div>
+      </div>
+      <ul class="service-list">
+        <li>
+          <div class="sl-dot sl-dot-e"></div>
+          <div class="sl-text">
+            <div class="sl-name">Contabilidad integral</div>
+            <div class="sl-desc">Registro, clasificación y presentación de estados financieros bajo NIIF para Pymes. Contabilidad al día, sin sorpresas.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-e"></div>
+          <div class="sl-text">
+            <div class="sl-name">Revisoría fiscal</div>
+            <div class="sl-desc">Control permanente e independiente de la información financiera de la empresa. Dictamen, informe y asesoría al órgano de gobierno.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-e"></div>
+          <div class="sl-text">
+            <div class="sl-name">Nómina y seguridad social</div>
+            <div class="sl-desc">Liquidación mensual de nómina, aportes PILA, prestaciones sociales, retención en la fuente sobre salarios y cumplimiento laboral.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-e"></div>
+          <div class="sl-text">
+            <div class="sl-name">Consultoría tributaria empresarial</div>
+            <div class="sl-desc">Planeación fiscal corporativa, IVA, ICA, retenciones, régimen tributario y acompañamiento en grandes contribuyentes.</div>
+          </div>
+        </li>
+        <li>
+          <div class="sl-dot sl-dot-e"></div>
+          <div class="sl-text">
+            <div class="sl-name">Implementación NIIF</div>
+            <div class="sl-desc">Transición, diagnóstico y aplicación de Normas Internacionales de Información Financiera para empresas colombianas obligadas.</div>
+          </div>
+        </li>
+      </ul>
+      <a href="#contacto" class="ruta-col-cta cta-e" onclick="preseleccionarRuta('e')">
+        Consultar como empresa →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PROPUESTA DE VALOR ══ -->
+<section class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">02 —</div>
+    <div>
+      <div class="sec-label">Por qué elegir A&amp;C</div>
+      <h2 class="sec-title">Lo que nos hace<br><em>diferentes</em></h2>
+    </div>
+  </div>
+
+  <div class="valor-grid">
+    <div class="valor-cell accent">
+      <div class="valor-num">01</div>
+      <div class="valor-title">Todo el año, no solo en temporada</div>
+      <div class="valor-desc">La asesoría tributaria correcta no ocurre en abril. Ocurre en enero, en julio, cuando toma decisiones de inversión, cuando cambia de régimen, cuando recibe una herencia. Estamos durante todo el ciclo fiscal.</div>
+    </div>
+    <div class="valor-cell">
+      <div class="valor-num">02</div>
+      <div class="valor-title">Personas tratadas como empresas</div>
+      <div class="valor-desc">Usted como persona natural merece el mismo rigor con que una firma de primer nivel trata a sus clientes corporativos. Diagnóstico, estrategia, seguimiento y reporte — no solo un formulario en línea.</div>
+    </div>
+    <div class="valor-cell accent">
+      <div class="valor-num">03</div>
+      <div class="valor-title">Veinte años de práctica real</div>
+      <div class="valor-desc">No trabajamos con plantillas genéricas. Trabajamos con los casos reales que hemos visto en veinte años de práctica en Colombia. Ese conocimiento acumulado es lo que resuelve sus problemas.</div>
+    </div>
+    <div class="valor-cell">
+      <div class="valor-num">04</div>
+      <div class="valor-title">Tecnología propia: SADI</div>
+      <div class="valor-desc">El grupo desarrolló su propio software contable para que su información financiera esté siempre organizada, accesible y correctamente estructurada. Nuestros clientes tienen acceso a herramientas de firma.</div>
+    </div>
+    <div class="valor-cell accent">
+      <div class="valor-num">05</div>
+      <div class="valor-title">Respuesta clara en lenguaje humano</div>
+      <div class="valor-desc">La tributación es compleja. Nuestra asesoría no lo es. Explicamos cada decisión con claridad, sin jerga innecesaria, para que usted entienda y apruebe lo que se hace con su información financiera.</div>
+    </div>
+    <div class="valor-cell">
+      <div class="valor-num">06</div>
+      <div class="valor-title">Respaldo del Grupo A&amp;C</div>
+      <div class="valor-desc">Detrás de Análisis &amp; Consultorías hay un grupo empresarial con seis marcas especializadas. Cuando su caso necesita auditoría, tecnología o consultoría estratégica, la solución está en el mismo ecosistema.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PROCESO ══ -->
+<section id="proceso" class="parch reveal">
+  <div class="sec-header">
+    <div class="sec-num">03 —</div>
+    <div>
+      <div class="sec-label">Cómo trabajamos</div>
+      <h2 class="sec-title">De la primera consulta<br>al <em>resultado concreto</em></h2>
+    </div>
+  </div>
+
+  <div class="proceso-steps">
+    <div class="proceso-step">
+      <div class="paso-num">01</div>
+      <div class="paso-title">Primera consulta</div>
+      <div class="paso-desc">Entendemos su situación tributaria y financiera actual. Sin compromisos. Sin costos ocultos. Solo escucha real.</div>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">02</div>
+      <div class="paso-title">Diagnóstico</div>
+      <div class="paso-desc">Analizamos su caso, identificamos oportunidades y riesgos, y definimos la estrategia tributaria que corresponde a su perfil.</div>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">03</div>
+      <div class="paso-title">Ejecución</div>
+      <div class="paso-desc">Preparamos, presentamos y gestionamos todo ante la DIAN y los organismos correspondientes con total representación.</div>
+    </div>
+    <div class="proceso-step">
+      <div class="paso-num">04</div>
+      <div class="paso-title">Seguimiento</div>
+      <div class="paso-desc">No terminamos cuando presentamos. Hacemos seguimiento durante el año, alertamos cambios normativos y actualizamos su estrategia.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ MANIFESTO ══ -->
+<div class="manifesto reveal">
+  <div class="manifesto-text">
+    "La diferencia entre pagar lo justo y pagar de más no es suerte — es tener al lado a alguien que <em>sabe leer lo que otros no ven.</em>"
+  </div>
+  <div class="manifesto-right">
+    <div class="manifesto-right-label">Análisis &amp; Consultorías · Medellín</div>
+    <div class="manifesto-tagline">Su patrimonio,<br>en manos<br>correctas.</div>
+  </div>
+</div>
+
+
+<!-- ══ FAQ ══ -->
+<section id="preguntas" class="reveal">
+  <div class="sec-header">
+    <div class="sec-num">04 —</div>
+    <div>
+      <div class="sec-label">Preguntas frecuentes</div>
+      <h2 class="sec-title">Lo que nuestros clientes<br><em>siempre preguntan</em></h2>
+    </div>
+  </div>
+
+  <div class="faq-tabs">
+    <button class="faq-tab active-p" onclick="cambiarFaq('p',this)">Personas naturales</button>
+    <button class="faq-tab" onclick="cambiarFaq('e',this)">Empresas</button>
+  </div>
+
+  <div class="faq-panel visible" id="faq-p">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Estoy obligado a declarar renta en Colombia?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Depende de sus ingresos, patrimonio, compras y consumos durante el año anterior. En Colombia, si supera los topes establecidos por la DIAN en cualquiera de esas categorías, debe declarar. Le hacemos el diagnóstico en la primera consulta, sin costo.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Cuánto vale la asesoría para declaración de renta?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">El valor depende de la complejidad de su situación fiscal: fuentes de ingreso, activos, deducciones aplicables y si tiene cuentas en el exterior. Contáctenos y le damos una cotización clara y sin sorpresas antes de iniciar.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Pueden atenderme si vivo fuera de Medellín?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Sí. Atendemos clientes en todo Colombia de manera virtual. Toda la documentación se gestiona digitalmente y la comunicación es por video llamada o WhatsApp según prefiera. El proceso es igual de riguroso que en persona.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Qué pasa si la DIAN me envía un requerimiento?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Lo representamos. Analizamos el requerimiento, preparamos la respuesta técnica y nos presentamos ante la DIAN en su nombre. Nuestros clientes no tienen que enfrentar solos los procesos de fiscalización.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Puedo planear mejor mis impuestos durante el año?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Absolutamente, y es la mejor inversión tributaria que puede hacer. La planeación fiscal durante el año — no solo en temporada — permite aprovechar deducciones, beneficios y estructuras que reducen legalmente su carga impositiva. Lo acompañamos en ese proceso.</div></div>
+    </div>
+  </div>
+
+  <div class="faq-panel" id="faq-e">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Cuándo está obligada mi empresa a tener revisor fiscal?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">En Colombia, las sociedades comerciales que superen los montos de activos brutos o ingresos brutos establecidos por la ley están obligadas. También las que por su naturaleza jurídica así lo exijan. Le hacemos el diagnóstico de obligatoriedad sin costo.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿En qué se diferencian la revisoría fiscal y la auditoría externa?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">La revisoría fiscal es una figura propia del derecho colombiano con funciones de control permanente y representación ante organismos de control. La auditoría externa es un encargo específico de revisión de estados financieros bajo estándares internacionales. Ambas las realizamos con independencia total.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Manejan la contabilidad con software propio?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Sí. El Grupo A&C desarrolló SADI, su propia plataforma contable y administrativa. Nuestros clientes empresariales tienen acceso a una herramienta de gestión financiera robusta, con módulos de nómina, facturación electrónica e inventarios.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">¿Pueden implementar NIIF en nuestra empresa?</span>
+        <span class="faq-q-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Sí. Hacemos diagnóstico de convergencia, cronograma de implementación, ajustes contables, capacitación al equipo y acompañamiento en la transición completa. Trabajamos tanto con NIIF plenas como con NIIF para Pymes según corresponda a su empresa.</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CONTACTO ══ -->
+<section id="contacto" class="alt reveal">
+  <div class="sec-header">
+    <div class="sec-num">05 —</div>
+    <div>
+      <div class="sec-label">Empiece aquí</div>
+      <h2 class="sec-title">La primera conversación<br><em>no tiene costo</em></h2>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-form-cell">
+      <p class="sec-intro" style="font-size:17px;margin-bottom:28px;">Cuéntenos quién es y qué necesita. Un especialista le responde en menos de 24 horas con una propuesta clara.</p>
+
+      <div class="ruta-label">Usted es…</div>
+      <div class="form-ruta-select">
+        <label class="form-ruta-opt" id="opt-p" onclick="seleccionarForm('p')">
+          <input type="radio" name="ruta" value="persona">
+          <span class="form-ruta-label">Persona natural</span>
+        </label>
+        <label class="form-ruta-opt" id="opt-e" onclick="seleccionarForm('e')">
+          <input type="radio" name="ruta" value="empresa">
+          <span class="form-ruta-label">Empresa · Pyme</span>
+        </label>
+      </div>
+
+      <form onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" class="form-input" placeholder="Su nombre">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Teléfono / WhatsApp</label>
+            <input type="tel" class="form-input" placeholder="+57 300 000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Correo electrónico</label>
+          <input type="email" class="form-input" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Qué necesita?</label>
+          <select class="form-select" id="servicio-select">
+            <option value="">Seleccione el servicio</option>
+            <optgroup label="Personas naturales">
+              <option>Declaración de renta</option>
+              <option>Planeación tributaria personal</option>
+              <option>Requerimiento DIAN</option>
+              <option>Independiente / profesional</option>
+            </optgroup>
+            <optgroup label="Empresas">
+              <option>Contabilidad integral</option>
+              <option>Revisoría fiscal</option>
+              <option>Nómina y seguridad social</option>
+              <option>Consultoría tributaria empresarial</option>
+              <option>Implementación NIIF</option>
+            </optgroup>
+            <option>No estoy seguro, necesito orientación</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cuéntenos brevemente</label>
+          <textarea class="form-textarea" placeholder="Describa su situación o lo que necesita resolver…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Solicitar primera consulta →</button>
+      </form>
+    </div>
+
+    <div class="contact-info-cell">
+      <div class="contact-info-title">Hablemos cuando<br>prefiera.</div>
+
+      <a href="https://wa.me/573000000000" target="_blank" class="contact-channel">
+        <div class="ch-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--jade)" stroke-width="1.5" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div>
+          <div class="ch-label">WhatsApp · atención inmediata</div>
+          <div class="ch-value" style="color:var(--jade);">+57 300 000 0000</div>
+        </div>
+      </a>
+
+      <div class="contact-channel" style="text-decoration:none;">
+        <div class="ch-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--topo-dark)" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="ch-label">Correo electrónico</div>
+          <div class="ch-value">Por confirmar</div>
+        </div>
+      </div>
+
+      <div class="contact-channel" style="text-decoration:none;">
+        <div class="ch-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--topo-dark)" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="ch-label">Sede principal</div>
+          <div class="ch-value">Medellín, Antioquia · Colombia</div>
+        </div>
+      </div>
+
+      <div class="contact-channel" style="text-decoration:none;border-bottom:none;">
+        <div class="ch-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--topo-dark)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="ch-label">Horario de atención</div>
+          <div class="ch-value">Lun – Vie · 8:00 am – 6:00 pm</div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/573000000000" target="_blank" class="wa-btn">
+        <div class="wa-dot"></div>
+        Escribir por WhatsApp ahora
+      </a>
+
+      <div class="grupo-badge">
+        <div class="gb-dot"></div>
+        <div>
+          <div class="gb-label">Parte de</div>
+          <div class="gb-name">Grupo Análisis &amp; Consultorías</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Análisis &amp; Consultorías</div>
+      <div class="footer-brand-sub">Una marca Grupo A&amp;C · Est. 2006</div>
+      <p class="footer-brand-desc">Consultoría tributaria, contable y financiera para personas naturales y empresas en Colombia. Veinte años de práctica real.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="#servicios-personas">Declaración de renta</a></li>
+        <li><a href="#servicios-personas">Planeación fiscal</a></li>
+        <li><a href="#servicios-empresas">Revisoría fiscal</a></li>
+        <li><a href="#servicios-empresas">Contabilidad integral</a></li>
+        <li><a href="#servicios-empresas">Nómina y NIIF</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">El grupo</div>
+      <ul class="footer-links">
+        <li><a href="index-claro.html">Portal del Grupo</a></li>
+        <li><a href="#">SADI · Software</a></li>
+        <li><a href="#">FASI · Auditoría</a></li>
+        <li><a href="#">TRACO</a></li>
+        <li><a href="#">Contadores en Colombia</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Análisis &amp; Consultorías · Medellín, Colombia</div>
+    <div class="footer-grupo">
+      Identidad y portal · <a href="#">SEMA · Brand Intelligence</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* Scroll reveal */
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+},{ threshold:0.07 });
+reveals.forEach(el => obs.observe(el));
+
+/* Nav scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* Selector de ruta en hero */
+function activarRuta(tipo, e) {
+  document.querySelectorAll('.ruta-btn').forEach(b => b.classList.remove('active-p','active-e'));
+  e.currentTarget.classList.add(tipo === 'p' ? 'active-p' : 'active-e');
+}
+
+/* Preseleccionar ruta en formulario desde CTA */
+function preseleccionarRuta(tipo) {
+  setTimeout(() => seleccionarForm(tipo), 400);
+}
+function seleccionarForm(tipo) {
+  document.getElementById('opt-p').classList.remove('sel-p','sel-e');
+  document.getElementById('opt-e').classList.remove('sel-p','sel-e');
+  if(tipo === 'p') document.getElementById('opt-p').classList.add('sel-p');
+  else document.getElementById('opt-e').classList.add('sel-e');
+}
+
+/* FAQ */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+function cambiarFaq(tipo, tab) {
+  document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active-p','active-e'));
+  document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('visible'));
+  tab.classList.add(tipo === 'p' ? 'active-p' : 'active-e');
+  document.getElementById('faq-'+tipo).classList.add('visible');
+}
+
+/* Form submit */
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'Solicitud enviada — le contactamos pronto ✓';
+  btn.style.background = 'var(--jade)';
+  setTimeout(() => {
+    btn.textContent = 'Solicitar primera consulta →';
+    btn.style.background = 'var(--obsidian)';
+  }, 4000);
+}
+
+/* Hamburger */
+document.getElementById('hamburger').addEventListener('click', function(){
+  const links = document.querySelector('.nav-links');
+  if(links) links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+});
+</script>
+</body>
+</html>
